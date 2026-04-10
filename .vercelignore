@@ -1,0 +1,8 @@
+# エージェント定義・ドキュメント（デプロイ不要）
+.claude/
+docs/
+CLAUDE.md
+*.md
+
+# 開発用
+.env.example
