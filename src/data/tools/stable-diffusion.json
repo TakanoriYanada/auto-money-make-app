@@ -1,0 +1,71 @@
+{
+  "slug": "stable-diffusion",
+  "name": "Stable Diffusion",
+  "tagline": "オープンソースで自由度の高いAI画像生成",
+  "description": "Stable Diffusionは、オープンソースのAI画像生成モデルで、テキストから高品質な画像を生成できます。Stability AIが開発し、無料で商業利用も可能なため、クリエイターやデベロッパーに人気があります。ローカル環境で動作させることも、DreamStudioなどのクラウドサービスを利用することも可能。細かいパラメータ調整ができるため、自分好みの画像スタイルを追求したい上級者に特におすすめです。プロンプトエンジニアリングの自由度が高く、LoRA（追加学習モデル）を使ったカスタマイズも可能です。",
+  "logo_url": "/images/tools/stable-diffusion.webp",
+  "website_url": "https://stability.ai/",
+  "affiliate_program": "none",
+  "affiliate_program_id": "",
+  "commission_type": "none",
+  "commission_rate": "なし",
+  "categories": ["ai-image", "design", "creative", "open-source"],
+  "use_cases": [
+    "カスタムスタイルの画像生成",
+    "ローカル環境での大量画像生成",
+    "キャラクター・イラスト作成",
+    "写真の編集・修正（inpainting）",
+    "画像のアップスケール",
+    "NFTアート・デジタルアート制作",
+    "ゲーム開発の素材作成"
+  ],
+  "tags": ["AI画像生成", "オープンソース", "無料", "カスタマイズ可能", "商用利用可"],
+  "rating": 4.5,
+  "pros": [
+    "オープンソースで無料利用可能",
+    "商業利用も無料でOK",
+    "ローカル環境で動作するためプライバシー保護",
+    "細かいパラメータ調整で思い通りの画像を生成",
+    "LoRAなどの追加モデルで無限にカスタマイズ可能",
+    "コミュニティが活発で情報・モデルが豊富",
+    "DreamStudioなどクラウド版も利用可能"
+  ],
+  "cons": [
+    "ローカル実行には高性能GPU（VRAM 8GB以上推奨）が必要",
+    "初心者には設定・操作が難しい",
+    "プロンプトの調整に時間がかかる",
+    "Midjourneyと比べると画像のクオリティにばらつきがある",
+    "日本語プロンプトの対応が限定的"
+  ],
+  "pricing": [
+    {
+      "name": "ローカル版",
+      "price_jpy": 0,
+      "price_usd": 0,
+      "billing": "free",
+      "features": [
+        "完全無料で利用可能",
+        "商業利用可能",
+        "無制限の画像生成",
+        "オフライン利用可能",
+        "カスタムモデル・LoRA使用可能"
+      ]
+    },
+    {
+      "name": "DreamStudio（クラウド版）",
+      "billing": "one_time",
+      "features": [
+        "クレジット制（初回25クレジット無料）",
+        "追加クレジット購入可能（10ドル＝1000クレジット）",
+        "GPU不要でブラウザから利用",
+        "高速生成",
+        "商業利用可能"
+      ]
+    }
+  ],
+  "has_free_plan": true,
+  "starting_price_jpy": 0,
+  "last_updated": "2026-04-11",
+  "featured": true,
+  "status": "active"
+}

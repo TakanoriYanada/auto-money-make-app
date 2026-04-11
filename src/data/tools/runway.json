@@ -1,0 +1,98 @@
+{
+  "slug": "runway",
+  "name": "Runway",
+  "tagline": "AI動画生成・編集の次世代プラットフォーム",
+  "description": "Runwayは、AI技術を活用した動画生成・編集プラットフォームで、テキストから動画を生成したり、既存動画を高度に編集できます。Gen-2モデルによるText to Video、Image to Video機能により、プロンプトや画像から数秒の動画を生成可能。また、背景削除、モーショントラッキング、グリーンバック合成など、従来プロ向けだった機能を簡単に利用できます。映像クリエイター、YouTuber、マーケター、広告制作者におすすめで、短尺動画制作の効率を大幅に向上させます。",
+  "logo_url": "/images/tools/runway.webp",
+  "website_url": "https://runwayml.com/",
+  "affiliate_program": "none",
+  "affiliate_program_id": "",
+  "commission_type": "none",
+  "commission_rate": "なし",
+  "categories": ["ai-video", "creative", "marketing"],
+  "use_cases": [
+    "テキストから短尺動画生成（Text to Video）",
+    "画像から動画生成（Image to Video）",
+    "動画の背景削除・置き換え",
+    "モーショントラッキング",
+    "グリーンバック合成",
+    "動画のスタイル変換",
+    "SNS用縦型動画作成"
+  ],
+  "tags": ["AI動画生成", "Gen-2", "Text to Video", "動画編集", "クリエイティブ"],
+  "rating": 4.6,
+  "pros": [
+    "Text to Videoで簡単に動画を生成可能",
+    "プロ向け編集機能（背景削除、トラッキング）が簡単",
+    "Gen-2モデルで高品質な動画生成",
+    "ブラウザで動作するため専用ソフト不要",
+    "無料プランで機能を試せる",
+    "Adobe Premiere ProやAfter Effectsの代替になる機能多数",
+    "定期的に新機能が追加される"
+  ],
+  "cons": [
+    "無料プランの生成時間が非常に限られている（月125クレジット＝約5秒動画）",
+    "生成される動画は短尺（数秒程度）",
+    "高品質な動画生成には多くのクレジットが必要",
+    "日本語プロンプトの精度は英語より劣る",
+    "生成速度が遅い場合がある"
+  ],
+  "pricing": [
+    {
+      "name": "Free",
+      "price_jpy": 0,
+      "price_usd": 0,
+      "billing": "free",
+      "features": [
+        "月125クレジット（約5秒の動画生成相当）",
+        "基本的な動画編集機能",
+        "720p解像度",
+        "透かしあり"
+      ]
+    },
+    {
+      "name": "Standard",
+      "price_jpy": 1800,
+      "price_usd": 12,
+      "billing": "monthly",
+      "features": [
+        "月625クレジット（約25秒相当）",
+        "1080p解像度",
+        "透かしなし",
+        "優先処理",
+        "全機能アクセス"
+      ]
+    },
+    {
+      "name": "Pro",
+      "price_jpy": 4200,
+      "price_usd": 28,
+      "billing": "monthly",
+      "features": [
+        "月2250クレジット（約90秒相当）",
+        "4K解像度対応",
+        "透かしなし",
+        "優先処理",
+        "エディター機能強化"
+      ]
+    },
+    {
+      "name": "Unlimited",
+      "price_jpy": 11400,
+      "price_usd": 76,
+      "billing": "monthly",
+      "features": [
+        "無制限生成（リラックスモード）",
+        "2250クレジット高速生成",
+        "4K解像度",
+        "優先サポート",
+        "チーム共同編集"
+      ]
+    }
+  ],
+  "has_free_plan": true,
+  "starting_price_jpy": 0,
+  "last_updated": "2026-04-11",
+  "featured": true,
+  "status": "active"
+}

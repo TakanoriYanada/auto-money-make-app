@@ -1,0 +1,72 @@
+{
+  "slug": "notion-ai",
+  "name": "Notion AI",
+  "tagline": "Notion内で使えるAIライティング＆要約アシスタント",
+  "description": "Notion AIは、人気ノートアプリNotionに統合されたAIアシスタント機能で、ドキュメント作成、要約、翻訳、アイデア出しなどをNotion内で完結できます。既存のNotionページを要約したり、文章を改善したり、新しいコンテンツを生成したりと、ワークフローを中断せずにAIの力を活用できます。既にNotionを使っているチームや個人にとって、別のAIツールに切り替える必要がなく、すべてがNotionの中で完結する点が大きなメリットです。ライター、マーケター、プロジェクトマネージャーにおすすめです。",
+  "logo_url": "/images/tools/notion-ai.webp",
+  "website_url": "https://www.notion.so/product/ai",
+  "affiliate_program": "none",
+  "affiliate_program_id": "",
+  "commission_type": "none",
+  "commission_rate": "なし",
+  "categories": ["ai-writing", "productivity", "collaboration"],
+  "use_cases": [
+    "議事録・ミーティングノートの要約",
+    "ブログ記事・マーケティングコンテンツの作成",
+    "プロジェクト計画書の作成",
+    "アイデア出し・ブレインストーミング",
+    "文章の改善・リライト",
+    "タスクリストの自動生成",
+    "多言語翻訳"
+  ],
+  "tags": ["Notion", "AIライティング", "要約", "翻訳", "生産性向上"],
+  "rating": 4.3,
+  "pros": [
+    "Notionとシームレスに統合、ワークフローを中断しない",
+    "既存ページの要約・改善が簡単",
+    "文章生成、翻訳、アイデア出しなど多機能",
+    "チーム全体で利用できる",
+    "日本語に対応",
+    "Notionユーザーなら追加設定不要ですぐ使える",
+    "コンテキストを理解した提案が可能"
+  ],
+  "cons": [
+    "無料トライアルは限定的（20回まで）",
+    "月額料金が別途必要（Notion料金に追加）",
+    "ChatGPTやClaudeと比べて応答精度はやや劣る",
+    "Notion外では使えない",
+    "長文生成にはやや不向き"
+  ],
+  "pricing": [
+    {
+      "name": "無料トライアル",
+      "price_jpy": 0,
+      "price_usd": 0,
+      "billing": "free",
+      "features": [
+        "20回までの無料利用",
+        "基本的なAI機能",
+        "Notionアカウント必須"
+      ]
+    },
+    {
+      "name": "Notion AI アドオン",
+      "price_jpy": 1500,
+      "price_usd": 10,
+      "billing": "monthly",
+      "features": [
+        "無制限のAI利用",
+        "文章生成・要約・改善",
+        "翻訳機能",
+        "アイデア生成",
+        "カスタムプロンプト",
+        "既存Notionプランに追加"
+      ]
+    }
+  ],
+  "has_free_plan": true,
+  "starting_price_jpy": 0,
+  "last_updated": "2026-04-11",
+  "featured": false,
+  "status": "active"
+}

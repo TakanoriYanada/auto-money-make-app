@@ -1,0 +1,86 @@
+{
+  "slug": "adobe-firefly",
+  "name": "Adobe Firefly",
+  "tagline": "商用利用に安心なAdobe公式AI画像生成",
+  "description": "Adobe Fireflyは、Adobe公式のAI画像生成ツールで、商用利用に安心して使える点が最大の特徴です。Adobe Stockやオープンライセンスのコンテンツでトレーニングされているため、著作権の問題が少なく、ビジネス用途に最適です。テキストから画像を生成するだけでなく、画像の一部を編集する生成塗りつぶし、テキストエフェクト、背景削除など、実用的な機能が豊富。Photoshop、Illustratorとも連携し、クリエイティブワークフローに統合できます。日本語にも対応しており、デザイナーやマーケターにおすすめです。",
+  "logo_url": "/images/tools/adobe-firefly.webp",
+  "website_url": "https://www.adobe.com/products/firefly.html",
+  "affiliate_program": "none",
+  "affiliate_program_id": "",
+  "commission_type": "none",
+  "commission_rate": "なし",
+  "categories": ["ai-image", "design", "creative"],
+  "use_cases": [
+    "商用利用可能な広告素材作成",
+    "Photoshop・Illustratorとの連携編集",
+    "生成塗りつぶし（画像の一部を自然に編集）",
+    "テキストエフェクト（文字にスタイル適用）",
+    "背景の削除・置き換え",
+    "マーケティングバナー作成",
+    "商品画像の加工"
+  ],
+  "tags": ["Adobe", "AI画像生成", "商用利用安心", "日本語対応", "生成塗りつぶし"],
+  "rating": 4.4,
+  "pros": [
+    "著作権に配慮したトレーニングで商用利用に安心",
+    "Adobe Creative Cloudと連携してワークフロー統合",
+    "生成塗りつぶしなど実用的な編集機能が豊富",
+    "日本語プロンプトに対応",
+    "無料プランでも月25クレジット利用可能",
+    "企業向けプランはさらに安全性が高い",
+    "PhotoshopやIllustratorから直接利用可能"
+  ],
+  "cons": [
+    "MidjourneyやStable Diffusionと比べて芸術性はやや劣る",
+    "無料プランの生成回数が少ない（月25回）",
+    "プロンプトの自由度はやや低め",
+    "生成速度が遅い場合がある",
+    "有料プランは他ツールより高額"
+  ],
+  "pricing": [
+    {
+      "name": "Free",
+      "price_jpy": 0,
+      "price_usd": 0,
+      "billing": "free",
+      "features": [
+        "月25生成クレジット",
+        "基本的な画像生成機能",
+        "生成塗りつぶし",
+        "テキストエフェクト",
+        "標準解像度"
+      ]
+    },
+    {
+      "name": "Premium",
+      "price_jpy": 800,
+      "price_usd": 4.99,
+      "billing": "monthly",
+      "features": [
+        "月100生成クレジット",
+        "高解像度出力",
+        "優先処理",
+        "全機能アクセス",
+        "Adobe Fontライブラリ利用"
+      ]
+    },
+    {
+      "name": "Creative Cloud（Fireflyサービス含む）",
+      "price_jpy": 7980,
+      "price_usd": 54.99,
+      "billing": "monthly",
+      "features": [
+        "月1000生成クレジット",
+        "Photoshop、Illustratorなど全Adobe製品",
+        "Fireflyの全機能",
+        "100GBストレージ",
+        "Adobe Fonts、Adobe Stock連携"
+      ]
+    }
+  ],
+  "has_free_plan": true,
+  "starting_price_jpy": 0,
+  "last_updated": "2026-04-11",
+  "featured": false,
+  "status": "active"
+}

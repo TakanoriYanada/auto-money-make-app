@@ -90,17 +90,17 @@
 
 ## フェーズ7: デプロイ
 
-- [ ] [deployer] `.env.example` の内容確認・Vercel環境変数設定
-- [ ] [deployer] `docs/REVENUE_MODEL.md` の記入完了確認（FILL_INが残っていないか）
-- [ ] [deployer] `vercel --prod` でデプロイ実行
-- [ ] [deployer] デプロイ後スモークテスト（全主要ページのHTTP 200確認）
-- [ ] [deployer] デプロイレポートを PROGRESS.md に追記する
+- [x] [deployer] `.env.example` の内容確認・Vercel環境変数設定（完了: 2026-04-11）
+- [x] [deployer] `docs/REVENUE_MODEL.md` の記入完了確認（FILL_INが残っていないか）（完了: 2026-04-11）
+- [x] [deployer] `vercel --prod` でデプロイ実行（完了: 2026-04-11）
+- [x] [deployer] デプロイ後スモークテスト（全主要ページのHTTP 200確認）（完了: 2026-04-11）
+- [x] [deployer] デプロイレポートを PROGRESS.md に追記する（完了: 2026-04-11）
 
 ---
 
 ## バックログ（将来のフェーズ）
 
-- [ ] [content-writer] 追加ツール10件のJSONファイル作成
+- [x] [content-writer] 追加ツール10件のJSONファイル作成（完了: 2026-04-11）
 - [ ] [content-writer] おすすめ記事5本（`src/data/roundups/`）
 - [x] [seo-specialist] Google Search Consoleへのサイトマップ登録手順書作成（完了: 2026-04-11, docs/GOOGLE_SEARCH_CONSOLE.md）
 - [ ] [implementer] サイト内検索機能の追加
@@ -110,11 +110,12 @@
 
 ## フェーズ8: Google Search Console 登録（手動作業含む）
 
-- [x] [implementer] `layout.tsx` の metadata に `verification.google` を環境変数で設定
-- [x] [implementer] `.env.example` に `GOOGLE_SITE_VERIFICATION` を追加
-- [x] [seo-specialist] `docs/GOOGLE_SEARCH_CONSOLE.md` 登録手順書作成
-- [ ] [human] GSCでプロパティ追加し、verification トークンを取得
-- [ ] [human] Vercel環境変数 `GOOGLE_SITE_VERIFICATION` に貼り付け
-- [ ] [human] `vercel --prod` で再デプロイ
-- [ ] [human] GSCで所有権確認 → `sitemap.xml` 送信
-- [ ] [human] 主要ページのインデックスリクエスト送信
+- [x] [implementer] `layout.tsx` の metadata に `verification.google` を環境変数で設定（完了: 2026-04-11）
+- [x] [implementer] `.env.example` に `GOOGLE_SITE_VERIFICATION` を追加（完了: 2026-04-11）
+- [x] [implementer] `NEXT_PUBLIC_SITE_URL` の改行/末尾スラッシュ防御的trim（layout/sitemap/robots/seo）（完了: 2026-04-11）
+- [x] [seo-specialist] `docs/GOOGLE_SEARCH_CONSOLE.md` 登録手順書作成（完了: 2026-04-11）
+- [x] [human] GSCでプロパティ追加し、verification トークンを取得（完了: 2026-04-11）
+- [x] [human] Vercel環境変数 `GOOGLE_SITE_VERIFICATION` に貼り付け（完了: 2026-04-11）
+- [x] [human] `vercel --prod --force` で再デプロイ（完了: 2026-04-11）
+- [x] [human] GSCで所有権確認 → `sitemap.xml` 送信（完了: 2026-04-11, 検出16ページ）
+- [x] [human] 主要ページのインデックスリクエスト送信（完了: 2026-04-11）

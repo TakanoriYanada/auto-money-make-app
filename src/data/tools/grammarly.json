@@ -1,0 +1,88 @@
+{
+  "slug": "grammarly",
+  "name": "Grammarly",
+  "tagline": "AIで英文を完璧に校正・改善",
+  "description": "Grammarlyは、英文のスペル、文法、句読点、表現の誤りを自動で検出し、改善提案を行うAIライティングアシスタントです。ブラウザ拡張機能、デスクトップアプリ、モバイルアプリで利用でき、Gmail、Google Docs、Word、Slackなど様々なアプリと連携します。単なる校正だけでなく、トーン（フォーマル/カジュアル）の調整、明瞭性の向上、語彙の強化など、より良い英文を書くための総合的なサポートを提供します。英語を使うビジネスパーソン、留学生、研究者、ライターに必須のツールです。",
+  "logo_url": "/images/tools/grammarly.webp",
+  "website_url": "https://www.grammarly.com/",
+  "affiliate_program": "none",
+  "affiliate_program_id": "",
+  "commission_type": "none",
+  "commission_rate": "なし",
+  "categories": ["ai-writing", "productivity", "education"],
+  "use_cases": [
+    "ビジネスメールの英文校正",
+    "学術論文・レポートの英文チェック",
+    "英文ブログ記事のライティング",
+    "プレゼンテーション資料の英文改善",
+    "SNS投稿の英文校正",
+    "英語学習の補助ツール",
+    "カバーレター・履歴書の英文チェック"
+  ],
+  "tags": ["英文校正", "文法チェック", "ライティング支援", "英語学習", "ビジネス英語"],
+  "rating": 4.6,
+  "pros": [
+    "文法・スペルミスをリアルタイムで検出",
+    "Gmail、Google Docs、Slackなど主要アプリと連携",
+    "トーン調整機能でフォーマル/カジュアルを使い分け",
+    "語彙の強化提案で表現力が向上",
+    "盗用検出機能で学術的な誠実性を確保",
+    "無料プランでも基本的な校正が使える",
+    "ブラウザ拡張でどこでも利用可能"
+  ],
+  "cons": [
+    "日本語には対応していない（英語専用）",
+    "無料プランでは高度な提案が制限される",
+    "有料プランの価格がやや高め（年払い推奨）",
+    "AIの提案が常に正しいとは限らない",
+    "プライバシーに配慮が必要（機密情報の入力注意）"
+  ],
+  "pricing": [
+    {
+      "name": "Free",
+      "price_jpy": 0,
+      "price_usd": 0,
+      "billing": "free",
+      "features": [
+        "基本的な文法・スペルチェック",
+        "句読点の誤り検出",
+        "トーン検出",
+        "ブラウザ拡張・アプリ利用"
+      ]
+    },
+    {
+      "name": "Premium",
+      "price_jpy": 1800,
+      "price_usd": 12,
+      "billing": "monthly",
+      "features": [
+        "高度な文法・語彙提案",
+        "明瞭性・簡潔性の改善",
+        "トーン調整提案",
+        "語彙の強化提案",
+        "フォーマル/カジュアル切り替え",
+        "盗用検出機能",
+        "優先サポート"
+      ]
+    },
+    {
+      "name": "Business",
+      "price_jpy": 2250,
+      "price_usd": 15,
+      "billing": "monthly",
+      "features": [
+        "Premiumの全機能",
+        "チームスタイルガイド",
+        "優先サポート",
+        "一元管理コンソール",
+        "請求書払い対応",
+        "SAML SSO対応"
+      ]
+    }
+  ],
+  "has_free_plan": true,
+  "starting_price_jpy": 0,
+  "last_updated": "2026-04-11",
+  "featured": false,
+  "status": "active"
+}

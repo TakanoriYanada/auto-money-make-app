@@ -1,0 +1,99 @@
+{
+  "slug": "heygen",
+  "name": "HeyGen",
+  "tagline": "AIアバターで簡単にプロ級動画作成",
+  "description": "HeyGenは、AIアバター（仮想人物）を使って簡単にプレゼンテーション動画や解説動画を作成できるAI動画生成ツールです。テキストを入力するだけで、リアルなAIアバターが自然に話す動画を数分で生成できます。100種類以上のアバター、40言語以上の音声合成に対応しており、日本語も高品質です。動画撮影や編集の手間なく、商品紹介動画、教育コンテンツ、SNS投稿動画を量産できるため、マーケター、YouTuber、オンライン講師、企業の広報担当者に人気があります。",
+  "logo_url": "/images/tools/heygen.webp",
+  "website_url": "https://www.heygen.com/",
+  "affiliate_program": "none",
+  "affiliate_program_id": "",
+  "commission_type": "none",
+  "commission_rate": "なし",
+  "categories": ["ai-video", "marketing", "productivity"],
+  "use_cases": [
+    "商品・サービス紹介動画",
+    "オンライン講座・教育コンテンツ",
+    "SNS用縦型動画（Instagram、TikTok）",
+    "YouTubeチャンネルの動画作成",
+    "企業のトレーニング動画",
+    "多言語展開の動画マーケティング",
+    "プレゼンテーション動画"
+  ],
+  "tags": ["AI動画生成", "AIアバター", "音声合成", "多言語対応", "日本語対応"],
+  "rating": 4.5,
+  "pros": [
+    "撮影・編集不要で高品質な動画を数分で生成",
+    "100種類以上のリアルなAIアバターから選択可能",
+    "40言語以上対応で多言語動画を簡単に作成",
+    "日本語の音声合成が自然で高品質",
+    "テンプレートが豊富で初心者でも簡単",
+    "自分の顔と声をカスタムアバター化できる（上位プラン）",
+    "動画のダウンロード・商用利用が可能"
+  ],
+  "cons": [
+    "無料プランは透かしあり＋1分動画のみ",
+    "アバターの動きや表情には若干の不自然さがある",
+    "有料プランの価格がやや高め",
+    "カスタマイズの自由度は限定的",
+    "生成に時間がかかる場合がある"
+  ],
+  "pricing": [
+    {
+      "name": "Free",
+      "price_jpy": 0,
+      "price_usd": 0,
+      "billing": "free",
+      "features": [
+        "月1分の動画生成",
+        "透かしあり",
+        "720p解像度",
+        "基本アバター利用",
+        "40言語の音声合成"
+      ]
+    },
+    {
+      "name": "Creator",
+      "price_jpy": 3600,
+      "price_usd": 24,
+      "billing": "monthly",
+      "features": [
+        "月15分の動画生成",
+        "透かしなし",
+        "1080p解像度",
+        "100種類以上のアバター",
+        "優先処理"
+      ]
+    },
+    {
+      "name": "Business",
+      "price_jpy": 9000,
+      "price_usd": 60,
+      "billing": "monthly",
+      "features": [
+        "月60分の動画生成",
+        "カスタムアバター作成（自分の顔・声）",
+        "1080p解像度",
+        "API利用可能",
+        "優先サポート",
+        "複数ユーザー対応"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "billing": "monthly",
+      "features": [
+        "無制限動画生成",
+        "カスタムアバター作成",
+        "専任サポート",
+        "API無制限",
+        "SSO対応",
+        "カスタム契約"
+      ]
+    }
+  ],
+  "has_free_plan": true,
+  "starting_price_jpy": 0,
+  "last_updated": "2026-04-11",
+  "featured": true,
+  "status": "active"
+}

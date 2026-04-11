@@ -1,0 +1,99 @@
+{
+  "slug": "otter",
+  "name": "Otter.ai",
+  "tagline": "会議を自動で文字起こし＆要約するAIアシスタント",
+  "description": "Otter.aiは、会議やインタビュー、講義などの音声をリアルタイムで文字起こし（自動書き起こし）し、AIが要約まで行ってくれるツールです。Zoom、Google Meet、Microsoft Teamsと連携し、オンライン会議に参加して自動で議事録を作成できます。音声認識の精度が高く、英語だけでなく日本語にも対応（日本語精度は英語より劣る）。会議後にキーワード検索や要点確認が簡単にでき、リモートワークやハイブリッドワークに最適です。ビジネスパーソン、研究者、ジャーナリスト、学生におすすめです。",
+  "logo_url": "/images/tools/otter.webp",
+  "website_url": "https://otter.ai/",
+  "affiliate_program": "none",
+  "affiliate_program_id": "",
+  "commission_type": "none",
+  "commission_rate": "なし",
+  "categories": ["productivity", "ai-transcription", "collaboration"],
+  "use_cases": [
+    "Zoom・Teams会議の自動議事録作成",
+    "インタビューの文字起こし",
+    "オンライン講義・セミナーの記録",
+    "1on1ミーティングの記録",
+    "ポッドキャスト・動画の文字起こし",
+    "会議内容の検索・振り返り",
+    "要約レポート作成"
+  ],
+  "tags": ["文字起こし", "議事録", "Zoom連携", "AI要約", "リモートワーク"],
+  "rating": 4.5,
+  "pros": [
+    "Zoom・Teams・Google Meetと自動連携",
+    "リアルタイム文字起こしで会議中も確認可能",
+    "AIによる自動要約でポイントをすぐ把握",
+    "キーワード検索で過去の会議内容を即座に探せる",
+    "無料プランでも月300分まで利用可能",
+    "複数人の発言者を自動で識別",
+    "モバイルアプリでスマホからも利用可能"
+  ],
+  "cons": [
+    "日本語の文字起こし精度は英語より劣る",
+    "無料プランでは1会議40分までの制限",
+    "音質が悪いと精度が大幅に低下",
+    "高度な編集機能は限定的",
+    "有料プランの価格がやや高め"
+  ],
+  "pricing": [
+    {
+      "name": "Free",
+      "price_jpy": 0,
+      "price_usd": 0,
+      "billing": "free",
+      "features": [
+        "月300分の文字起こし",
+        "1会議40分まで",
+        "リアルタイム文字起こし",
+        "Zoom・Teams連携",
+        "基本的な検索機能"
+      ]
+    },
+    {
+      "name": "Pro",
+      "price_jpy": 1500,
+      "price_usd": 10,
+      "billing": "monthly",
+      "features": [
+        "月1200分の文字起こし",
+        "1会議90分まで",
+        "AI要約機能",
+        "高度な検索",
+        "音声同期再生",
+        "カスタム単語登録"
+      ]
+    },
+    {
+      "name": "Business",
+      "price_jpy": 3000,
+      "price_usd": 20,
+      "billing": "monthly",
+      "features": [
+        "月6000分の文字起こし",
+        "1会議4時間まで",
+        "チーム共有機能",
+        "管理者コンソール",
+        "優先サポート",
+        "Salesforce連携"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "billing": "monthly",
+      "features": [
+        "無制限の文字起こし",
+        "SSO対応",
+        "専任サポート",
+        "カスタムセキュリティ",
+        "API利用可能"
+      ]
+    }
+  ],
+  "has_free_plan": true,
+  "starting_price_jpy": 0,
+  "last_updated": "2026-04-11",
+  "featured": false,
+  "status": "active"
+}

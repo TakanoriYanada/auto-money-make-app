@@ -1,0 +1,86 @@
+{
+  "slug": "microsoft-copilot",
+  "name": "Microsoft Copilot",
+  "tagline": "Microsoft 365に統合されたAIアシスタント",
+  "description": "Microsoft Copilotは、Microsoft 365（Word、Excel、PowerPoint、Outlook、Teams）に統合されたAIアシスタントで、日々の業務を効率化します。GPT-4ベースのAIがドキュメント作成、データ分析、メール作成、会議要約などをサポートし、企業のナレッジとデータを活用して的確な提案を行います。Bing ChatとしてのWeb検索機能も無料で利用可能。Microsoft 365を使う企業やビジネスパーソンにとって、業務生産性を大幅に向上させる必須ツールです。",
+  "logo_url": "/images/tools/microsoft-copilot.webp",
+  "website_url": "https://www.microsoft.com/microsoft-365/microsoft-copilot",
+  "affiliate_program": "none",
+  "affiliate_program_id": "",
+  "commission_type": "none",
+  "commission_rate": "なし",
+  "categories": ["ai-chat", "productivity", "ai-writing", "collaboration"],
+  "use_cases": [
+    "Wordでの文書作成・要約",
+    "Excelでのデータ分析・グラフ作成",
+    "PowerPointでのプレゼン資料作成",
+    "Outlookでのメール作成・要約",
+    "Teamsでの会議要約・議事録作成",
+    "ビジネスドキュメントの翻訳",
+    "社内データ検索・情報整理"
+  ],
+  "tags": ["Microsoft 365", "GPT-4", "ビジネスAI", "生産性向上", "企業向け"],
+  "rating": 4.4,
+  "pros": [
+    "Microsoft 365アプリと完全統合",
+    "GPT-4ベースで高精度な応答",
+    "企業データとナレッジを活用した提案",
+    "無料版（Bing Chat）でもWeb検索＋GPT-4が使える",
+    "日本語に完全対応",
+    "セキュリティとコンプライアンスに配慮",
+    "Word、Excel、PowerPointでの作業効率が大幅向上"
+  ],
+  "cons": [
+    "有料版は Microsoft 365 E3/E5 契約が必要",
+    "有料版の価格が高い（1ユーザー月4,500円）",
+    "無料版（Bing Chat）は機能が限定的",
+    "企業データ連携は有料版のみ",
+    "学習コストがやや高い"
+  ],
+  "pricing": [
+    {
+      "name": "Copilot（無料版・Bing Chat）",
+      "price_jpy": 0,
+      "price_usd": 0,
+      "billing": "free",
+      "features": [
+        "Web検索機能",
+        "GPT-4ベースの対話AI",
+        "画像生成（DALL-E 3）",
+        "日本語対応",
+        "ブラウザ・アプリで利用可能"
+      ]
+    },
+    {
+      "name": "Copilot Pro",
+      "price_jpy": 3750,
+      "price_usd": 20,
+      "billing": "monthly",
+      "features": [
+        "Word、Excel、PowerPointでCopilot利用",
+        "優先アクセス（GPT-4 Turbo）",
+        "画像生成無制限",
+        "OneDrive統合",
+        "個人向けプラン"
+      ]
+    },
+    {
+      "name": "Microsoft 365 Copilot（企業向け）",
+      "price_jpy": 4500,
+      "price_usd": 30,
+      "billing": "monthly",
+      "features": [
+        "Word、Excel、PowerPoint、Outlook、Teamsで利用",
+        "企業データ連携",
+        "Microsoft Graph統合",
+        "セキュリティ・コンプライアンス対応",
+        "Microsoft 365 E3/E5 契約が必要"
+      ]
+    }
+  ],
+  "has_free_plan": true,
+  "starting_price_jpy": 0,
+  "last_updated": "2026-04-11",
+  "featured": true,
+  "status": "active"
+}
