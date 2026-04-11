@@ -1,0 +1,184 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { getAllToolSlugs, getToolBySlug, getRelatedTools } from "@/lib/tools";
+import { buildAffiliateUrl, getCtaLabel } from "@/lib/affiliate";
+import { generateToolJsonLd, generateBreadcrumbJsonLd, getToolPageTitle, getCanonicalUrl } from "@/lib/seo";
+import AffiliateButton from "@/components/AffiliateButton";
+import StarRating from "@/components/StarRating";
+import Breadcrumb from "@/components/Breadcrumb";
+import ToolCard from "@/components/ToolCard";
+
+const SITE_NAME = "AIツール比較ナビ";
+
+export const revalidate = 86400;
+
+export async function generateStaticParams() {
+  return getAllToolSlugs().map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const tool = getToolBySlug(slug);
+  if (!tool) return {};
+
+  const title = getToolPageTitle(tool);
+  const description = tool.description.slice(0, 160);
+  const canonicalUrl = getCanonicalUrl(`/tools/${slug}`);
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      siteName: SITE_NAME,
+      locale: "ja_JP",
+      type: "article",
+      url: canonicalUrl,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
+export default async function ToolPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const tool = getToolBySlug(slug);
+  if (!tool) notFound();
+
+  const affiliateUrl = buildAffiliateUrl(tool);
+  const ctaLabel = getCtaLabel(tool);
+  const relatedTools = getRelatedTools(tool, 3);
+
+  const toolJsonLd = generateToolJsonLd(tool);
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: "ホーム", url: "/" },
+    { name: "ツール一覧", url: "/tools" },
+    { name: tool.name, url: `/tools/${tool.slug}` },
+  ]);
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <Breadcrumb items={[
+          { name: "ホーム", href: "/" },
+          { name: "ツール一覧", href: "/tools" },
+          { name: tool.name },
+        ]} />
+
+        {/* ヘッダー */}
+        <div className="mt-6 bg-white rounded-2xl border border-gray-200 p-6 md:p-8">
+          <div className="flex flex-col md:flex-row md:items-start gap-6">
+            <div className="flex-1">
+              <h1 className="text-3xl font-bold text-gray-900">{tool.name}</h1>
+              <p className="text-gray-500 mt-1">{tool.tagline}</p>
+              <StarRating rating={tool.rating} size="lg" className="mt-3" />
+              <p className="mt-4 text-gray-700 leading-relaxed">{tool.description}</p>
+            </div>
+            {affiliateUrl && (
+              <div className="flex flex-col gap-3 md:min-w-48">
+                <AffiliateButton href={affiliateUrl} label={ctaLabel} toolName={tool.name} size="lg" />
+                <a href={tool.website_url} target="_blank" rel="noopener noreferrer"
+                  className="text-center text-sm text-gray-500 hover:text-gray-700 underline">
+                  公式サイト
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* 料金 */}
+        <section className="mt-8">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">料金プラン</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {tool.pricing.map((tier) => (
+              <div key={tier.name} className="bg-white border border-gray-200 rounded-xl p-5">
+                <div className="font-semibold text-gray-900">{tier.name}</div>
+                <div className="mt-1 text-2xl font-bold text-green-600">
+                  {tier.billing === "free" ? "無料" :
+                    tier.price_jpy ? `¥${tier.price_jpy.toLocaleString()}/月` :
+                    tier.price_usd ? `$${tier.price_usd}/月` : "要問合せ"}
+                </div>
+                <ul className="mt-3 space-y-1">
+                  {tier.features.map((f) => (
+                    <li key={f} className="text-sm text-gray-600 flex items-start gap-1">
+                      <span className="text-green-500 mt-0.5">✓</span> {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* メリット・デメリット */}
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <section className="bg-green-50 rounded-xl p-6">
+            <h2 className="text-lg font-bold text-green-800 mb-3">メリット</h2>
+            <ul className="space-y-2">
+              {tool.pros.map((p) => (
+                <li key={p} className="flex items-start gap-2 text-sm text-green-900">
+                  <span className="text-green-500 mt-0.5 shrink-0">✓</span> {p}
+                </li>
+              ))}
+            </ul>
+          </section>
+          <section className="bg-red-50 rounded-xl p-6">
+            <h2 className="text-lg font-bold text-red-800 mb-3">デメリット</h2>
+            <ul className="space-y-2">
+              {tool.cons.map((c) => (
+                <li key={c} className="flex items-start gap-2 text-sm text-red-900">
+                  <span className="text-red-400 mt-0.5 shrink-0">✕</span> {c}
+                </li>
+              ))}
+            </ul>
+          </section>
+        </div>
+
+        {/* CTA */}
+        {affiliateUrl && (
+          <div className="mt-10 bg-gray-900 rounded-2xl p-8 text-center text-white">
+            <p className="text-lg font-semibold">{tool.name}を試してみる</p>
+            <p className="text-gray-400 text-sm mt-1">
+              {tool.has_free_plan ? "無料プランから始められます" : `月額${tool.starting_price_jpy?.toLocaleString() ?? "—"}円〜`}
+            </p>
+            <AffiliateButton href={affiliateUrl} label={ctaLabel} toolName={tool.name} size="lg" variant="secondary" className="mt-4" />
+          </div>
+        )}
+
+        {/* 関連ツール */}
+        {relatedTools.length > 0 && (
+          <section className="mt-12">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">関連するAIツール</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {relatedTools.map((t) => (
+                <ToolCard key={t.slug} tool={t} />
+              ))}
+            </div>
+            <div className="text-center mt-6">
+              <Link href="/tools" className="text-green-600 hover:text-green-700 font-medium text-sm">
+                すべてのツールを見る →
+              </Link>
+            </div>
+          </section>
+        )}
+
+        <p className="mt-8 text-xs text-gray-400 text-right">最終更新: {tool.last_updated}</p>
+      </div>
+    </>
+  );
+}

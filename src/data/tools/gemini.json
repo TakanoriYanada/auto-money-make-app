@@ -1,0 +1,72 @@
+{
+  "slug": "gemini",
+  "name": "Google Gemini",
+  "tagline": "Google検索と連携した次世代AIアシスタント",
+  "description": "Google Gemini（旧称Bard）は、Googleが開発した次世代のマルチモーダルAIアシスタントです。Google検索エンジンとの深い連携により、リアルタイムの最新情報にアクセスでき、事実確認や調査タスクに強みがあります。Gemini Proモデルは文章生成、コード生成、画像理解、動画分析など多様なタスクに対応しており、Googleサービス（Gmail、Docs、Driveなど）との統合も特徴です。無料で高度な機能が使えるため、情報収集やリサーチを重視するユーザーにおすすめです。",
+  "logo_url": "/images/tools/gemini.webp",
+  "website_url": "https://gemini.google.com/",
+  "affiliate_program": "none",
+  "affiliate_program_id": "",
+  "commission_type": "none",
+  "commission_rate": "なし",
+  "categories": ["ai-chat", "ai-writing", "productivity"],
+  "use_cases": [
+    "最新ニュース・トレンドのリサーチ",
+    "事実確認とファクトチェック",
+    "Google Workspaceとの連携作業",
+    "旅行計画・レストラン検索",
+    "プログラミング学習とコード生成",
+    "画像・動画の内容分析",
+    "メールやドキュメントの自動作成"
+  ],
+  "tags": ["Google", "Gemini Pro", "検索連携", "リアルタイム情報", "無料", "マルチモーダル"],
+  "rating": 4.5,
+  "pros": [
+    "Google検索との連携でリアルタイムの最新情報を取得",
+    "無料プランでも高度な機能が充実（2026年4月時点）",
+    "Gmail、Docs、DriveなどGoogleサービスと統合",
+    "画像・動画・音声など多様な入力形式に対応",
+    "日本語の精度が高く自然な会話が可能",
+    "YouTubeやGoogle Mapsとの連携機能",
+    "モバイルアプリでスマホからも利用可能"
+  ],
+  "cons": [
+    "創作的なタスクではChatGPTやClaudeに劣る場合がある",
+    "コード生成の精度がClaudeやCopilotより低い",
+    "長文コンテキストの処理能力が限定的",
+    "プライバシー面でGoogleへのデータ送信を懸念する声もある"
+  ],
+  "pricing": [
+    {
+      "name": "Free",
+      "price_jpy": 0,
+      "price_usd": 0,
+      "billing": "free",
+      "features": [
+        "Gemini Proモデルの利用",
+        "Google検索連携",
+        "Googleサービス統合",
+        "画像・動画解析機能",
+        "無制限の利用（公平使用ポリシー内）"
+      ]
+    },
+    {
+      "name": "Gemini Advanced",
+      "price_jpy": 2900,
+      "price_usd": 19.99,
+      "billing": "monthly",
+      "features": [
+        "Gemini Ultra 1.0モデルへのアクセス",
+        "優先アクセスと高速応答",
+        "より高度な推論能力",
+        "Google One 2TBストレージ付き",
+        "Gmail、DocsでのGemini統合強化"
+      ]
+    }
+  ],
+  "has_free_plan": true,
+  "starting_price_jpy": 0,
+  "last_updated": "2026-04-11",
+  "featured": true,
+  "status": "active"
+}

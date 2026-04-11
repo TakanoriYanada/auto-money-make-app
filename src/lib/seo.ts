@@ -1,6 +1,6 @@
 import type { Tool, ComparisonFrontmatter, RoundupFrontmatter } from "@/types";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com").trim().replace(/\/$/, "");
 const SITE_NAME = "AIツール比較ナビ";
 
 export function generateToolJsonLd(tool: Tool) {
@@ -110,4 +110,56 @@ export function getComparisonPageTitle(
 ): string {
   const year = new Date().getFullYear();
   return `${toolA.name} vs ${toolB.name}【${year}年版】徹底比較｜どっちがおすすめ？| ${SITE_NAME}`;
+}
+
+export function getRoundupPageTitle(category: string, count: number): string {
+  const year = new Date().getFullYear();
+  return `${category}おすすめAIツール${count}選【${year}年版】| ${SITE_NAME}`;
+}
+
+export function getCanonicalUrl(path: string): string {
+  return `${SITE_URL}${path}`;
+}
+
+export function parseFaqFromMdx(content: string): { question: string; answer: string }[] {
+  const faqs: { question: string; answer: string }[] = [];
+  const lines = content.split("\n");
+  let inFaqSection = false;
+  let currentQuestion = "";
+  let currentAnswer = "";
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+
+    if (line.match(/^##\s+(?:よくある質問|FAQ)/)) {
+      inFaqSection = true;
+      continue;
+    }
+
+    if (inFaqSection) {
+      if (line.match(/^###\s+(.+)/)) {
+        if (currentQuestion && currentAnswer) {
+          faqs.push({
+            question: currentQuestion.trim(),
+            answer: currentAnswer.trim().replace(/\*\*/g, ""),
+          });
+        }
+        currentQuestion = line.replace(/^###\s+/, "");
+        currentAnswer = "";
+      } else if (line.match(/^##\s+[^#]/)) {
+        break;
+      } else if (currentQuestion && line.trim() && !line.startsWith("---")) {
+        currentAnswer += line + " ";
+      }
+    }
+  }
+
+  if (currentQuestion && currentAnswer) {
+    faqs.push({
+      question: currentQuestion.trim(),
+      answer: currentAnswer.trim().replace(/\*\*/g, ""),
+    });
+  }
+
+  return faqs;
 }

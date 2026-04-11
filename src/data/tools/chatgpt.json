@@ -1,0 +1,94 @@
+{
+  "slug": "chatgpt",
+  "name": "ChatGPT",
+  "tagline": "世界で最も使われている対話型AIアシスタント",
+  "description": "ChatGPTはOpenAIが開発した対話型AI（人工知能）で、自然な会話形式で質問に答えたり、文章を作成したり、コードを生成したりできます。GPT-4モデルを搭載したPlusプランでは、画像解析、ウェブ検索、プラグイン連携など高度な機能が利用可能です。ライティング、プログラミング、調査、アイデア出しなど幅広い用途に対応し、日本語にも完全対応しています。無料プランでも基本的な機能が使えるため、AIツール初心者にもおすすめです。",
+  "logo_url": "/images/tools/chatgpt.webp",
+  "website_url": "https://chat.openai.com/",
+  "affiliate_program": "none",
+  "affiliate_program_id": "",
+  "commission_type": "none",
+  "commission_rate": "なし",
+  "categories": ["ai-chat", "ai-writing", "ai-coding", "productivity"],
+  "use_cases": [
+    "ブログ記事・SNS投稿の下書き作成",
+    "メールやビジネス文書の作成",
+    "プログラミングのコード生成とデバッグ",
+    "アイデア出し・ブレインストーミング",
+    "外国語の翻訳・英文添削",
+    "データ分析と要約",
+    "学習支援・質問応答"
+  ],
+  "tags": ["OpenAI", "GPT-4", "対話AI", "文章生成", "コード生成", "無料プランあり"],
+  "rating": 4.7,
+  "pros": [
+    "無料プランでも十分使える基本機能が充実",
+    "GPT-4による高精度な文章生成とコード生成",
+    "日本語の理解度が非常に高く自然な会話が可能",
+    "プラグインや画像解析などの拡張機能が豊富",
+    "モバイルアプリ対応で外出先でも利用可能",
+    "ウェブ検索機能で最新情報にも対応（Plusプラン）",
+    "世界中で広く使われており情報・事例が豊富"
+  ],
+  "cons": [
+    "無料プランでは応答速度が遅くなることがある",
+    "最新のGPT-4モデルは有料プラン限定",
+    "長時間の連続利用で利用制限がかかる場合がある",
+    "情報の正確性を保証しないため事実確認が必要"
+  ],
+  "pricing": [
+    {
+      "name": "Free",
+      "price_jpy": 0,
+      "price_usd": 0,
+      "billing": "free",
+      "features": [
+        "GPT-3.5モデルの利用",
+        "基本的な対話機能",
+        "無制限のメッセージ（混雑時は制限あり）"
+      ]
+    },
+    {
+      "name": "Plus",
+      "price_jpy": 3000,
+      "price_usd": 20,
+      "billing": "monthly",
+      "features": [
+        "GPT-4モデルの利用",
+        "優先アクセス（混雑時も高速）",
+        "画像解析・生成機能（DALL-E 3）",
+        "ウェブ検索機能",
+        "プラグイン利用可能",
+        "データ分析機能（Advanced Data Analysis）"
+      ]
+    },
+    {
+      "name": "Team",
+      "price_jpy": 4500,
+      "price_usd": 30,
+      "billing": "monthly",
+      "features": [
+        "Plusの全機能",
+        "チーム管理機能",
+        "共有ワークスペース",
+        "管理者コントロール"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "billing": "monthly",
+      "features": [
+        "Teamの全機能",
+        "無制限の高速アクセス",
+        "カスタマイズ可能なソリューション",
+        "専任サポート",
+        "セキュリティ・コンプライアンス強化"
+      ]
+    }
+  ],
+  "has_free_plan": true,
+  "starting_price_jpy": 0,
+  "last_updated": "2026-04-11",
+  "featured": true,
+  "status": "active"
+}

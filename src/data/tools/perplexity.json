@@ -1,0 +1,72 @@
+{
+  "slug": "perplexity",
+  "name": "Perplexity AI",
+  "tagline": "AI搭載の次世代検索エンジン",
+  "description": "Perplexity AIは、対話型AIと検索エンジンを融合させた次世代リサーチツールです。質問に対して単なるリンクの羅列ではなく、複数のソースから情報を統合し、出典付きの要約回答を生成します。リアルタイムのウェブ検索機能により最新情報にアクセスでき、学術論文、ニュース、技術文書などの調査に最適です。ProプランではGPT-4やClaude、Geminiなど複数のAIモデルを選択でき、より深い調査が可能になります。ライター、研究者、マーケターにおすすめのツールです。",
+  "logo_url": "/images/tools/perplexity.webp",
+  "website_url": "https://www.perplexity.ai/",
+  "affiliate_program": "none",
+  "affiliate_program_id": "",
+  "commission_type": "none",
+  "commission_rate": "なし",
+  "categories": ["ai-chat", "productivity"],
+  "use_cases": [
+    "学術研究・論文調査",
+    "最新ニュースのリサーチ",
+    "競合分析・市場調査",
+    "技術文書の検索と要約",
+    "ファクトチェックと情報検証",
+    "ブログ記事のリサーチ",
+    "専門知識の習得"
+  ],
+  "tags": ["検索AI", "リサーチツール", "出典付き回答", "リアルタイム検索", "GPT-4対応"],
+  "rating": 4.4,
+  "pros": [
+    "回答に出典が明記されるため信頼性が高い",
+    "リアルタイムのウェブ検索で最新情報を取得",
+    "複数のAIモデル（GPT-4、Claude、Gemini）を選択可能（Pro）",
+    "学術論文やニュースなど多様な情報源に対応",
+    "シンプルで使いやすいインターフェース",
+    "無料プランでも十分な機能が利用可能",
+    "質問履歴の保存と共有機能"
+  ],
+  "cons": [
+    "日本語の情報源が英語より少ない",
+    "無料プランでは1日の利用回数に制限がある",
+    "創作的なタスクには向いていない",
+    "コード生成機能は他のAIツールに劣る"
+  ],
+  "pricing": [
+    {
+      "name": "Free",
+      "price_jpy": 0,
+      "price_usd": 0,
+      "billing": "free",
+      "features": [
+        "基本的な検索AI機能",
+        "出典付き回答",
+        "1日あたりの利用制限あり",
+        "標準AIモデルの利用"
+      ]
+    },
+    {
+      "name": "Pro",
+      "price_jpy": 3000,
+      "price_usd": 20,
+      "billing": "monthly",
+      "features": [
+        "無制限のPro Search",
+        "GPT-4、Claude、Geminiなど複数モデル選択可能",
+        "ファイルアップロード機能",
+        "API アクセス（一部プラン）",
+        "優先サポート",
+        "より詳細な回答生成"
+      ]
+    }
+  ],
+  "has_free_plan": true,
+  "starting_price_jpy": 0,
+  "last_updated": "2026-04-11",
+  "featured": true,
+  "status": "active"
+}

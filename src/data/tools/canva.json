@@ -1,0 +1,86 @@
+{
+  "slug": "canva",
+  "name": "Canva",
+  "tagline": "誰でも簡単にプロ級デザインを作成",
+  "description": "Canvaは、デザイン初心者でも簡単にプロフェッショナルなグラフィックを作成できるオンラインデザインツールです。SNS投稿、プレゼンテーション、ポスター、名刺、動画編集など豊富なテンプレートが用意されており、ドラッグ&ドロップの直感的な操作で誰でも美しいデザインを完成させられます。最近ではAI画像生成機能（Magic Media）やAI背景削除、自動リサイズなど、AI機能も充実。ブロガー、SNSマーケター、個人事業主におすすめのツールです。",
+  "logo_url": "/images/tools/canva.webp",
+  "website_url": "https://www.canva.com/",
+  "affiliate_program": "a8",
+  "affiliate_program_id": "",
+  "commission_type": "recurring",
+  "commission_rate": "要確認",
+  "categories": ["design", "ai-image", "marketing"],
+  "use_cases": [
+    "SNS投稿画像（Instagram、Twitter、Facebook）",
+    "ブログアイキャッチ画像作成",
+    "プレゼンテーション資料作成",
+    "チラシ・ポスターデザイン",
+    "YouTubeサムネイル作成",
+    "名刺・ロゴデザイン",
+    "動画編集（簡易版）"
+  ],
+  "tags": ["デザインツール", "テンプレート", "AI画像生成", "SNSマーケティング", "初心者向け"],
+  "rating": 4.7,
+  "pros": [
+    "デザイン初心者でも使いやすい直感的インターフェース",
+    "100万点以上のテンプレートですぐに作成開始",
+    "AI画像生成・背景削除などAI機能が充実",
+    "SNSやブログに最適化されたサイズプリセット",
+    "無料プランでも多くの機能が利用可能",
+    "チーム共同編集機能でコラボが簡単",
+    "モバイルアプリでスマホからも編集可能"
+  ],
+  "cons": [
+    "テンプレートを使うと他ユーザーとデザインが被りやすい",
+    "高度なデザイン編集はAdobe製品に劣る",
+    "無料プランでは一部素材やフォントが使用不可",
+    "大量の画像を扱うと動作が重くなる場合がある"
+  ],
+  "pricing": [
+    {
+      "name": "Free",
+      "price_jpy": 0,
+      "price_usd": 0,
+      "billing": "free",
+      "features": [
+        "25万点以上の無料テンプレート",
+        "5GBのクラウドストレージ",
+        "基本的なデザインツール",
+        "限定的な写真・素材ライブラリ"
+      ]
+    },
+    {
+      "name": "Pro",
+      "price_jpy": 1800,
+      "price_usd": 12.99,
+      "billing": "monthly",
+      "features": [
+        "1億点以上のプレミアム素材",
+        "背景削除機能（AI）",
+        "Magic Resize（自動リサイズ）",
+        "100GBのクラウドストレージ",
+        "ブランドキット機能",
+        "SNS投稿スケジュール機能",
+        "AI画像生成（Magic Media）"
+      ]
+    },
+    {
+      "name": "Teams",
+      "price_jpy": 4500,
+      "price_usd": 29.99,
+      "billing": "monthly",
+      "features": [
+        "Proの全機能（5名まで）",
+        "チームテンプレート管理",
+        "ブランド統一機能",
+        "承認ワークフロー",
+        "無制限のストレージ"
+      ]
+    }
+  ],
+  "has_free_plan": true,
+  "starting_price_jpy": 0,
+  "last_updated": "2026-04-11",
+  "featured": true,
+  "status": "active"
+}

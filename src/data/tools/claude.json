@@ -1,0 +1,83 @@
+{
+  "slug": "claude",
+  "name": "Claude",
+  "tagline": "安全で正確な応答が特徴のAIアシスタント",
+  "description": "ClaudeはAnthropicが開発した対話型AIアシスタントで、安全性と正確性を重視した設計が特徴です。Claude 3.5 Sonnetモデルは特にコード生成、長文読解、複雑な推論タスクに優れており、最大200,000トークン（約15万語）の長文コンテキストに対応しています。ライティング、リサーチ、コーディング、データ分析など幅広い用途に対応し、日本語も高精度で処理できます。無料プランでも十分な機能が使えるため、ChatGPTと比較検討するユーザーが多いAIツールです。",
+  "logo_url": "/images/tools/claude.webp",
+  "website_url": "https://claude.ai/",
+  "affiliate_program": "none",
+  "affiliate_program_id": "",
+  "commission_type": "none",
+  "commission_rate": "なし",
+  "categories": ["ai-chat", "ai-writing", "ai-coding", "productivity"],
+  "use_cases": [
+    "長文の要約・分析（論文、契約書、レポート）",
+    "高品質なコード生成とリファクタリング",
+    "ビジネス文書・提案書の作成",
+    "複雑な問題の分析と推論",
+    "英文・日本語の翻訳と校正",
+    "創作活動・ストーリー執筆",
+    "技術文書の作成"
+  ],
+  "tags": ["Anthropic", "Claude 3.5", "安全AI", "長文対応", "コード生成", "無料プランあり"],
+  "rating": 4.6,
+  "pros": [
+    "200,000トークンの超長文コンテキストに対応",
+    "コード生成の精度が高くエラーが少ない",
+    "安全性を重視した設計で不適切な応答を回避",
+    "複雑な推論タスクや分析に強い",
+    "日本語の理解度が高く自然な文章生成が可能",
+    "無料プランでも実用的な機能が利用可能",
+    "ファイルアップロード機能でPDF・画像解析が可能"
+  ],
+  "cons": [
+    "無料プランでは1日の利用回数に制限がある",
+    "ChatGPTと比べてプラグインなどの拡張機能が少ない",
+    "日本語の情報や事例がChatGPTより少ない",
+    "ウェブ検索機能は未実装（2026年4月時点）"
+  ],
+  "pricing": [
+    {
+      "name": "Free",
+      "price_jpy": 0,
+      "price_usd": 0,
+      "billing": "free",
+      "features": [
+        "Claude 3.5 Sonnetモデルの利用",
+        "基本的な対話機能",
+        "ファイルアップロード機能",
+        "1日あたりの利用制限あり"
+      ]
+    },
+    {
+      "name": "Pro",
+      "price_jpy": 3000,
+      "price_usd": 20,
+      "billing": "monthly",
+      "features": [
+        "5倍の利用量上限",
+        "優先アクセス（高速応答）",
+        "Claude 3 Opusモデルへのアクセス",
+        "大量のファイル処理が可能"
+      ]
+    },
+    {
+      "name": "Team",
+      "price_jpy": 4500,
+      "price_usd": 30,
+      "billing": "monthly",
+      "features": [
+        "Proの全機能",
+        "チーム管理機能",
+        "共有会話履歴",
+        "管理者コンソール",
+        "優先サポート"
+      ]
+    }
+  ],
+  "has_free_plan": true,
+  "starting_price_jpy": 0,
+  "last_updated": "2026-04-11",
+  "featured": true,
+  "status": "active"
+}

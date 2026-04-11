@@ -45,3 +45,22 @@ export function getAllToolSlugs(): string[] {
     .filter((f) => f.endsWith(".json"))
     .map((f) => f.replace(".json", ""));
 }
+
+export function getRelatedTools(tool: Tool, limit = 3): Tool[] {
+  const allTools = getAllTools().filter((t) => t.slug !== tool.slug);
+
+  const scored = allTools.map((t) => {
+    let score = 0;
+    const sharedCategories = t.categories.filter((c) => tool.categories.includes(c)).length;
+    const sharedTags = t.tags.filter((tag) => tool.tags.includes(tag)).length;
+    score += sharedCategories * 3;
+    score += sharedTags * 1;
+    return { tool: t, score };
+  });
+
+  return scored
+    .filter((s) => s.score > 0)
+    .sort((a, b) => b.score - a.score || b.tool.rating - a.tool.rating)
+    .slice(0, limit)
+    .map((s) => s.tool);
+}

@@ -1,0 +1,94 @@
+{
+  "slug": "obsidian",
+  "name": "Obsidian",
+  "tagline": "あなたの第二の脳を構築するMarkdownノート",
+  "description": "Obsidianは、ローカルファイルベースのMarkdownノートアプリで、知識のネットワークを構築する「Zettelkasten（ツェッテルカステン）」メソッドに最適化されています。ノート間を双方向リンクでつなぎ、グラフビューで知識の繋がりを可視化できます。全データがローカルに保存されるためプライバシーとセキュリティが高く、プラグイン・テーマによる拡張性も魅力です。研究者、ライター、エンジニアなど、長期的に知識を蓄積・活用したい人に特におすすめです。",
+  "logo_url": "/images/tools/obsidian.webp",
+  "website_url": "https://obsidian.md/",
+  "affiliate_program": "none",
+  "affiliate_program_id": "",
+  "commission_type": "none",
+  "commission_rate": "なし",
+  "categories": ["note-taking", "productivity"],
+  "use_cases": [
+    "個人知識管理（PKM）・Zettelkasten",
+    "研究ノート・論文執筆",
+    "読書記録と引用管理",
+    "プロジェクトドキュメント管理",
+    "日記・ジャーナリング",
+    "技術メモ・コードスニペット管理",
+    "アイデア収集とリンク思考"
+  ],
+  "tags": ["Markdown", "ローカルファースト", "双方向リンク", "グラフビュー", "プラグイン拡張"],
+  "rating": 4.7,
+  "pros": [
+    "全データがローカル保存でプライバシー保護",
+    "Markdownベースで他ツールへの移行が容易",
+    "双方向リンクとグラフビューで知識を可視化",
+    "1000以上のコミュニティプラグインで拡張可能",
+    "基本機能は完全無料で利用可能",
+    "テーマカスタマイズで見た目を自由に変更",
+    "オフライン完全対応"
+  ],
+  "cons": [
+    "初心者には学習曲線が急で使いこなすまで時間がかかる",
+    "公式の同期機能は有料（$8/月）",
+    "チーム共同編集機能は弱い（個人向け設計）",
+    "モバイルアプリの機能がデスクトップ版より限定的"
+  ],
+  "pricing": [
+    {
+      "name": "Personal Use",
+      "price_jpy": 0,
+      "price_usd": 0,
+      "billing": "free",
+      "features": [
+        "全ての基本機能",
+        "無制限のノート・リンク",
+        "ローカルストレージ",
+        "プラグイン・テーマ利用",
+        "商用利用不可"
+      ]
+    },
+    {
+      "name": "Commercial License",
+      "price_jpy": 7500,
+      "price_usd": 50,
+      "billing": "annual",
+      "features": [
+        "Personal Useの全機能",
+        "商用利用可能",
+        "仕事での使用が許可される"
+      ]
+    },
+    {
+      "name": "Sync（オプション）",
+      "price_jpy": 1200,
+      "price_usd": 8,
+      "billing": "monthly",
+      "features": [
+        "エンドツーエンド暗号化同期",
+        "複数デバイス間で自動同期",
+        "バージョン履歴（1年間）",
+        "10GBのクラウドストレージ"
+      ]
+    },
+    {
+      "name": "Publish（オプション）",
+      "price_jpy": 1200,
+      "price_usd": 8,
+      "billing": "monthly",
+      "features": [
+        "ノートをウェブサイトとして公開",
+        "カスタムドメイン対応",
+        "検索機能付き",
+        "パスワード保護"
+      ]
+    }
+  ],
+  "has_free_plan": true,
+  "starting_price_jpy": 0,
+  "last_updated": "2026-04-11",
+  "featured": true,
+  "status": "active"
+}

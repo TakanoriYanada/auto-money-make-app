@@ -10,7 +10,7 @@ deployer エージェントはこのファイルに `FILL_IN` が残っている
 
 ### A8.net
 - **登録URL**: https://www.a8.net/
-- **会員ID**: `FILL_IN`
+- **会員ID**: `a26041100844`
 - **メモ**: 日本最大のASP。国内SaaSやツールの広告主が多い
 
 ### バリューコマース
@@ -67,7 +67,7 @@ AFFILIATE_ID_A8=your_a8_member_id
 AFFILIATE_ID_VC=your_vc_publisher_id
 AFFILIATE_ID_MOSHIMO=your_moshimo_partner_id
 NEXT_PUBLIC_ADSENSE_ID=ca-pub-XXXXXXXXXX
-NEXT_PUBLIC_SITE_URL=https://your-domain.com
+NEXT_PUBLIC_SITE_URL=https://aitool-hikaku-navi.com
 
 # Vercel本番用
 vercel env add AFFILIATE_ID_A8 production

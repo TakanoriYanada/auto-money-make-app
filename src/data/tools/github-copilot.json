@@ -1,0 +1,96 @@
+{
+  "slug": "github-copilot",
+  "name": "GitHub Copilot",
+  "tagline": "GitHub公式のAIプログラミングアシスタント",
+  "description": "GitHub CopilotはMicrosoft傘下のGitHubが提供するAIペアプログラミングツールで、OpenAIのCodexモデル（GPT-4ベース）を使用しています。コードエディタ内でリアルタイムにコード補完を提案し、関数の自動生成、テストコード作成、バグ修正などを支援します。VS Code、JetBrains IDE、Neovimなど主要なエディタに対応し、GitHub連携により実際のコードリポジトリから学習します。個人開発者から大規模チームまで幅広く利用されている信頼性の高いツールです。",
+  "logo_url": "/images/tools/github-copilot.webp",
+  "website_url": "https://github.com/features/copilot",
+  "affiliate_program": "none",
+  "affiliate_program_id": "",
+  "commission_type": "none",
+  "commission_rate": "なし",
+  "categories": ["ai-coding", "productivity"],
+  "use_cases": [
+    "リアルタイムコード補完と生成",
+    "関数・クラスの自動実装",
+    "テストコード自動生成",
+    "ボイラープレートコード削減",
+    "API利用コードの生成",
+    "コメントからコード生成",
+    "既存コードのリファクタリング"
+  ],
+  "tags": ["GitHub", "コード補完", "GPT-4", "VS Code", "JetBrains", "AI補完"],
+  "rating": 4.6,
+  "pros": [
+    "GitHub公式の信頼性と安定性",
+    "VS Code、JetBrains、Neovimなど主要エディタ対応",
+    "リアルタイムのコード補完が高速で正確",
+    "複数言語・フレームワークに対応",
+    "GitHubリポジトリとの深い連携",
+    "学生・教育者・OSSメンテナは無料利用可能",
+    "チャット機能で質問しながらコーディング可能"
+  ],
+  "cons": [
+    "月額料金がやや高め（個人$10、ビジネス$19）",
+    "生成コードのライセンス問題を懸念する声もある",
+    "完全にコンテキストを理解できない場合がある",
+    "コードの品質保証はユーザー自身が行う必要がある"
+  ],
+  "pricing": [
+    {
+      "name": "Free（学生・教育者・OSS）",
+      "price_jpy": 0,
+      "price_usd": 0,
+      "billing": "free",
+      "features": [
+        "学生、教育者、OSSメンテナ向け",
+        "個人プランと同等の機能",
+        "GitHub学生パック登録が必要"
+      ]
+    },
+    {
+      "name": "Individual",
+      "price_jpy": 1500,
+      "price_usd": 10,
+      "billing": "monthly",
+      "features": [
+        "コード補完機能",
+        "チャット機能（Copilot Chat）",
+        "複数エディタ対応",
+        "コマンドライン補完",
+        "プライベートリポジトリ対応"
+      ]
+    },
+    {
+      "name": "Business",
+      "price_jpy": 2850,
+      "price_usd": 19,
+      "billing": "monthly",
+      "features": [
+        "Individualの全機能",
+        "組織管理機能",
+        "ポリシー管理",
+        "プライバシー保護強化",
+        "エンタープライズサポート"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "price_jpy": 5850,
+      "price_usd": 39,
+      "billing": "monthly",
+      "features": [
+        "Businessの全機能",
+        "カスタムモデル（自社コードベースで訓練）",
+        "高度なセキュリティとコンプライアンス",
+        "専任サポート",
+        "監査ログ"
+      ]
+    }
+  ],
+  "has_free_plan": true,
+  "starting_price_jpy": 0,
+  "last_updated": "2026-04-11",
+  "featured": true,
+  "status": "active"
+}

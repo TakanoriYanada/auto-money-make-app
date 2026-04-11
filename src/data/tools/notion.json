@@ -1,0 +1,94 @@
+{
+  "slug": "notion",
+  "name": "Notion",
+  "tagline": "オールインワンのワークスペースツール",
+  "description": "Notionは、ノート、タスク管理、データベース、Wiki、プロジェクト管理を1つにまとめたオールインワンワークスペースです。ブロック単位で自由にコンテンツを構成でき、テキスト、画像、リスト、表、カレンダー、ボードなど多様な要素を組み合わせられます。チーム向けの共同編集機能が充実しており、テンプレート機能で業務フローを標準化できます。最近ではNotion AIが統合され、文章作成やアイデア出しもサポート。個人の知識管理からチームのプロジェクト管理まで幅広く対応します。",
+  "logo_url": "/images/tools/notion.webp",
+  "website_url": "https://www.notion.so/",
+  "affiliate_program": "none",
+  "affiliate_program_id": "",
+  "commission_type": "none",
+  "commission_rate": "なし",
+  "categories": ["note-taking", "productivity"],
+  "use_cases": [
+    "個人の知識管理・第二の脳（Second Brain）",
+    "プロジェクト管理・タスクトラッキング",
+    "チームWiki・ドキュメント管理",
+    "会議議事録の作成・共有",
+    "データベース構築（顧客管理、在庫管理）",
+    "ブログ下書き・コンテンツ管理",
+    "学習ノート・読書記録"
+  ],
+  "tags": ["ノートアプリ", "プロジェクト管理", "データベース", "共同編集", "Notion AI"],
+  "rating": 4.6,
+  "pros": [
+    "自由度の高いブロックベースエディタ",
+    "ノート、タスク、データベースを統合管理",
+    "豊富なテンプレートですぐに使い始められる",
+    "リアルタイム共同編集機能が優秀",
+    "Notion AIで文章作成やアイデア出しを支援",
+    "無料プランでも個人利用には十分な機能",
+    "モバイルアプリ、ウェブ、デスクトップ全対応"
+  ],
+  "cons": [
+    "初心者には機能が多すぎて使いこなすまで時間がかかる",
+    "オフライン利用が限定的（一部機能のみ）",
+    "大量データの読み込みが遅い場合がある",
+    "Markdown対応が不完全（エクスポート時など）"
+  ],
+  "pricing": [
+    {
+      "name": "Free",
+      "price_jpy": 0,
+      "price_usd": 0,
+      "billing": "free",
+      "features": [
+        "個人利用に無制限のページとブロック",
+        "最大10名のゲスト招待",
+        "基本的なデータベース機能",
+        "7日間のページ履歴"
+      ]
+    },
+    {
+      "name": "Plus",
+      "price_jpy": 1500,
+      "price_usd": 10,
+      "billing": "monthly",
+      "features": [
+        "無制限のゲスト招待",
+        "無制限のファイルアップロード",
+        "30日間のページ履歴",
+        "優先サポート"
+      ]
+    },
+    {
+      "name": "Business",
+      "price_jpy": 2250,
+      "price_usd": 15,
+      "billing": "monthly",
+      "features": [
+        "Plusの全機能",
+        "SAML SSO対応",
+        "プライベートチームスペース",
+        "90日間のページ履歴",
+        "高度な権限管理"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "billing": "monthly",
+      "features": [
+        "Businessの全機能",
+        "無制限のページ履歴",
+        "高度なセキュリティとコンプライアンス",
+        "専任サポート",
+        "カスタム契約"
+      ]
+    }
+  ],
+  "has_free_plan": true,
+  "starting_price_jpy": 0,
+  "last_updated": "2026-04-11",
+  "featured": true,
+  "status": "active"
+}
