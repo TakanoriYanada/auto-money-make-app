@@ -21,13 +21,8 @@ export function generateToolJsonLd(tool: Tool) {
           priceCurrency: "JPY",
         }
       : undefined,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: String(tool.rating),
-      bestRating: "5",
-      worstRating: "1",
-      reviewCount: "1",
-    },
+    // aggregateRating は実際のユーザーレビュー機能を実装後に再追加する
+    // reviewCount: "1" は信頼性が低く、Googleからスパム判定されるリスクがある
   };
 }
 

@@ -129,7 +129,7 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
       <div className="max-w-4xl mx-auto px-4 py-8">
         <Breadcrumb items={[
           { name: "ホーム", href: "/" },
-          { name: "比較記事" },
+          { name: "比較記事", href: "/compare" },
           { name: `${toolA.name} vs ${toolB.name}` },
         ]} />
 

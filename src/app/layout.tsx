@@ -66,7 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Link>
             <nav className="flex items-center gap-5 text-sm text-gray-600">
               <Link href="/tools" className="hover:text-green-600 transition-colors">ツール一覧</Link>
-              <Link href="/compare/chatgpt-vs-claude" className="hover:text-green-600 transition-colors">比較記事</Link>
+              <Link href="/compare" className="hover:text-green-600 transition-colors">比較記事</Link>
               <Link href="/guide" className="hover:text-green-600 transition-colors hidden sm:inline">ガイド</Link>
             </nav>
           </div>
@@ -88,7 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <p className="font-semibold text-gray-700 mb-3">コンテンツ</p>
                 <ul className="space-y-2 text-xs">
                   <li><Link href="/tools" className="hover:text-green-600 transition-colors">ツール一覧</Link></li>
-                  <li><Link href="/compare/chatgpt-vs-claude" className="hover:text-green-600 transition-colors">比較記事</Link></li>
+                  <li><Link href="/compare" className="hover:text-green-600 transition-colors">比較記事</Link></li>
                   <li><Link href="/guide" className="hover:text-green-600 transition-colors">ガイド一覧</Link></li>
                   <li><Link href="/guide/ai-blog-start" className="hover:text-green-600 transition-colors">AIブログの始め方</Link></li>
                 </ul>

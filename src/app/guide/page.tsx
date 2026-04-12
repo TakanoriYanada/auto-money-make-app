@@ -7,9 +7,9 @@ import Breadcrumb from "@/components/Breadcrumb";
 import ToolIcon from "@/components/ToolIcon";
 
 const SITE_NAME = "AIツール比較ナビ";
-const PAGE_TITLE = "AIガイド一覧";
+const PAGE_TITLE = "AIツール使い方ガイド一覧【2026年版】初心者向け完全解説";
 const PAGE_DESC =
-  "ChatGPT・Claude・GeminiなどAIツールの使い方やAIブログの始め方を、初心者向けに分かりやすく解説した完全ガイド記事一覧です。";
+  "ChatGPT・Claude・Gemini等のAIツールの使い方を初心者向けに完全解説。プロンプト例・活用シーン・コツを含む実践的なガイド記事を多数掲載。AIブログの始め方・収益化方法も詳しく紹介します。";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,

@@ -11,7 +11,7 @@ export const revalidate = 3600;
 
 const SITE_NAME = "AIツール比較ナビ";
 const PAGE_TITLE = "AIツール比較ナビ — ChatGPT・Claude・Geminiなど人気AIを徹底比較";
-const PAGE_DESC = "AIツールを料金・機能・使いやすさで徹底比較。ChatGPT・Claude・Gemini・Perplexity AIなど人気ツールの評判・料金プランを詳しく解説します。";
+const PAGE_DESC = "ChatGPT・Claude・Gemini・Perplexity AIなど人気AIツールを料金・機能・使いやすさで徹底比較。初心者にもわかりやすく目的別のおすすめを紹介。無料プランから有料プランまで評判・料金プラン・活用事例を詳しく解説します。";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,

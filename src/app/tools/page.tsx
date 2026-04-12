@@ -6,8 +6,8 @@ import ToolCard from "@/components/ToolCard";
 export const revalidate = 86400;
 
 const SITE_NAME = "AIツール比較ナビ";
-const PAGE_TITLE = "AIツール一覧【2026年版】人気ツールを徹底比較";
-const PAGE_DESC = "ChatGPT・Claude・Gemini・Perplexity AIなど人気AIツールを一覧で比較。料金・機能・評価・使いやすさで絞り込めます。";
+const PAGE_TITLE = "AIツール一覧50選【2026年最新版】料金・機能・評価で徹底比較";
+const PAGE_DESC = "ChatGPT・Claude・Gemini・Perplexity AIなど人気AIツール50選を一覧で比較。料金プラン・機能・評価・使いやすさで絞り込み可能。無料で使えるツールからプロ向け有料ツールまで網羅的に紹介します。";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,

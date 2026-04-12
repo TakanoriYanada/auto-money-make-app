@@ -4,7 +4,7 @@ import { getCanonicalUrl } from "@/lib/seo";
 import Breadcrumb from "@/components/Breadcrumb";
 
 const SITE_NAME = "AIツール比較ナビ";
-const PAGE_TITLE = "免責事項";
+const PAGE_TITLE = "免責事項 | AIツール比較ナビ";
 const PAGE_DESC = `${SITE_NAME}の免責事項。掲載情報の正確性・リンク先の内容・著作権・損害賠償の責任範囲について記載しています。`;
 
 export const metadata: Metadata = {

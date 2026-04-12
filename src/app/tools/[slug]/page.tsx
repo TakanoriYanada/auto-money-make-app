@@ -25,7 +25,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!tool) return {};
 
   const title = getToolPageTitle(tool);
-  const description = tool.description.slice(0, 160);
+  const description = tool.description.length > 155
+    ? tool.description.slice(0, 155).replace(/。[^。]*$/, "。") || tool.description.slice(0, 155) + "…"
+    : tool.description;
   const canonicalUrl = getCanonicalUrl(`/tools/${slug}`);
 
   return {

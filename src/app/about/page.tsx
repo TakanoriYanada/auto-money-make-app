@@ -4,7 +4,7 @@ import { getCanonicalUrl } from "@/lib/seo";
 import Breadcrumb from "@/components/Breadcrumb";
 
 const SITE_NAME = "AIツール比較ナビ";
-const PAGE_TITLE = "運営者情報";
+const PAGE_TITLE = "運営者情報 | AIツール比較ナビ";
 const PAGE_DESC = `${SITE_NAME}の運営者情報・サイトの運営方針・お問い合わせ先を記載しています。`;
 
 export const metadata: Metadata = {

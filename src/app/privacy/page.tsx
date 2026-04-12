@@ -4,7 +4,7 @@ import { getCanonicalUrl } from "@/lib/seo";
 import Breadcrumb from "@/components/Breadcrumb";
 
 const SITE_NAME = "AIツール比較ナビ";
-const PAGE_TITLE = "プライバシーポリシー";
+const PAGE_TITLE = "プライバシーポリシー | AIツール比較ナビ";
 const PAGE_DESC = `${SITE_NAME}のプライバシーポリシー。個人情報の取り扱い、Cookie・アクセス解析ツール・広告配信の利用について記載しています。`;
 
 export const metadata: Metadata = {
