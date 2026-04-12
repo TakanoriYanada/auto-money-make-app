@@ -6,7 +6,9 @@ import {
   getCanonicalUrl,
 } from "@/lib/seo";
 import { getSponsorById, buildSponsorUrl, getSponsorImpressionPixelUrl } from "@/lib/sponsors";
+import type { BookData } from "@/lib/rakuten";
 import Breadcrumb from "@/components/Breadcrumb";
+import BookRecommendation from "@/components/BookRecommendation";
 
 export const revalidate = 604800;
 
@@ -62,6 +64,33 @@ const FAQS = [
     question: "AIツールはどれを使えばいいですか？",
     answer:
       "記事執筆の下書きにはChatGPT Plus（月額3,000円）かClaude Pro（月額3,000円）が定番です。無料で始めるならChatGPTやClaudeの無料プラン、Google Geminiも十分使えます。用途やトークン数に応じて使い分けると効率的です。",
+  },
+];
+
+const BLOG_BOOKS: BookData[] = [
+  {
+    title: "ブログで5億円稼いだ方法",
+    author: "きぐち",
+    description: "ブログ収益化の決定版。18年のブログ運営で得たSEO・集客・アフィリエイトのノウハウを惜しみなく公開。AIブログの収益化戦略のベースとして役立ちます。",
+    rakutenUrl: "https://search.rakuten.co.jp/search/mall/ブログで5億円稼いだ方法/",
+    rating: 5,
+    priceJpy: 1760,
+  },
+  {
+    title: "沈黙のWebライティング —Webマーケッター ボーンの激闘—",
+    author: "松尾茂起",
+    description: "SEOライティングの名著。検索意図に応える文章の書き方をストーリー形式で解説。AI執筆の下書きを手直しする際の判断基準として非常に参考になります。",
+    rakutenUrl: "https://search.rakuten.co.jp/search/mall/沈黙のWebライティング/",
+    rating: 5,
+    priceJpy: 2310,
+  },
+  {
+    title: "10年稼ぎ続けるブログを創る アフィリエイト 成功の仕組み",
+    author: "河井大志, 染谷昌利",
+    description: "アフィリエイトの仕組みと収益化の全体像を体系的に学べる1冊。A8.net・もしもアフィリエイトの活用法も解説されており、当サイトのようなアフィリエイトブログ運営に直結します。",
+    rakutenUrl: "https://search.rakuten.co.jp/search/mall/10年稼ぎ続ける+ブログ+アフィリエイト/",
+    rating: 4,
+    priceJpy: 1738,
   },
 ];
 
@@ -370,6 +399,12 @@ export default function AiBlogStartGuidePage() {
             ))}
           </div>
         </section>
+
+        {/* おすすめ書籍 */}
+        <BookRecommendation
+          books={BLOG_BOOKS}
+          sectionTitle="AIブログ運営を学ぶおすすめ書籍"
+        />
 
         {/* まとめ */}
         <section className="mt-12 bg-gray-900 rounded-2xl p-8 text-white">

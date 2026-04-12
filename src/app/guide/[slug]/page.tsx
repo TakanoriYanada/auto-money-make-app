@@ -18,6 +18,7 @@ import AffiliateButton from "@/components/AffiliateButton";
 import StarRating from "@/components/StarRating";
 import SponsorBanner from "@/components/SponsorBanner";
 import ToolIcon from "@/components/ToolIcon";
+import BookRecommendation from "@/components/BookRecommendation";
 
 const SITE_NAME = "AIツール比較ナビ";
 
@@ -213,6 +214,13 @@ export default async function ToolGuidePage({
                 使いこなしのコツ
               </a>
             </li>
+            {guide.books && guide.books.length > 0 && (
+              <li>
+                <a href="#books" className="hover:text-green-600 hover:underline">
+                  おすすめ書籍
+                </a>
+              </li>
+            )}
             <li>
               <a href="#faq" className="hover:text-green-600 hover:underline">
                 よくある質問
@@ -291,6 +299,16 @@ export default async function ToolGuidePage({
             ))}
           </div>
         </section>
+
+        {/* おすすめ書籍 */}
+        {guide.books && guide.books.length > 0 && (
+          <div id="books">
+            <BookRecommendation
+              books={guide.books}
+              sectionTitle={`${tool?.name ?? "このテーマ"}を学ぶおすすめ書籍`}
+            />
+          </div>
+        )}
 
         {/* CTA（対象ツール） */}
         {tool && affiliateUrl && (
