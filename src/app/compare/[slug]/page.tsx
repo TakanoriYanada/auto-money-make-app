@@ -17,6 +17,7 @@ import type { ComparisonFrontmatter } from "@/types";
 import AffiliateButton from "@/components/AffiliateButton";
 import StarRating from "@/components/StarRating";
 import Breadcrumb from "@/components/Breadcrumb";
+import SponsorBanner from "@/components/SponsorBanner";
 
 const SITE_NAME = "AIツール比較ナビ";
 
@@ -180,6 +181,11 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
             </table>
           </div>
         </section>
+
+        {/* スポンサー枠: インライン（記事ごとにローテーション） */}
+        <div className="mt-10">
+          <SponsorBanner variant="inline" seed={slug} />
+        </div>
 
         {/* 各ツールのメリット */}
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -1,7 +1,9 @@
 import Link from "next/link";
 import type { Tool } from "@/types";
-import { buildAffiliateUrl, getCtaLabel } from "@/lib/affiliate";
+import { buildAffiliateUrl, getCtaLabel, getImpressionPixelUrl } from "@/lib/affiliate";
+import { getToolIconUrl } from "@/lib/tools";
 import StarRating from "./StarRating";
+import ToolIcon from "./ToolIcon";
 
 interface ToolCardProps {
   tool: Tool;
@@ -10,13 +12,13 @@ interface ToolCardProps {
 export default function ToolCard({ tool }: ToolCardProps) {
   const affiliateUrl = buildAffiliateUrl(tool);
   const ctaLabel = getCtaLabel(tool);
+  const impressionPixel = getImpressionPixelUrl(tool);
+  const iconUrl = getToolIconUrl(tool);
 
   return (
     <div className="group bg-white rounded-xl border border-gray-200 p-6 flex flex-col gap-4 hover:shadow-lg hover:border-green-300 transition-all duration-200">
       <div className="flex items-start gap-4">
-        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center text-2xl font-bold text-gray-700 shrink-0 border border-gray-200 group-hover:border-green-400 transition-colors">
-          {tool.name.charAt(0)}
-        </div>
+        <ToolIcon iconUrl={iconUrl} name={tool.name} />
         <div className="flex-1 min-w-0">
           <h3 className="font-bold text-lg text-gray-900 leading-tight">{tool.name}</h3>
           <p className="text-sm text-gray-500 mt-1 line-clamp-1">{tool.tagline}</p>
@@ -60,6 +62,11 @@ export default function ToolCard({ tool }: ToolCardProps) {
           </a>
         )}
       </div>
+
+      {impressionPixel && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={impressionPixel} alt="" width={1} height={1} className="hidden" />
+      )}
     </div>
   );
 }

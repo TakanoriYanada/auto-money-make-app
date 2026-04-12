@@ -4,6 +4,29 @@
 
 ---
 
+## [2026-04-11] implementer — 法的必須ページ4点を実装
+
+### 実施内容
+広告審査・Google AdSense申請で必須となる4ページを実装:
+- `src/app/about/page.tsx` — 運営者情報（サイト目的・運営方針・アフィリエイト使用明示）
+- `src/app/privacy/page.tsx` — プライバシーポリシー（Cookie・GA・広告配信・アフィリエイト詳細）
+- `src/app/disclaimer/page.tsx` — 免責事項（情報正確性・損害賠償・著作権・リンク先責任）
+- `src/app/contact/page.tsx` — お問い合わせ（`NEXT_PUBLIC_CONTACT_FORM_URL` 環境変数でGoogle Forms等にリンク可能・未設定時は「準備中」表示）
+
+### 追加・変更
+- `src/app/layout.tsx` — フッターを3カラムに拡張、4ページへの内部リンクを追加
+- `src/app/sitemap.ts` — 4ページをサイトマップに追加（priority 0.3, yearly）
+- 全ページに canonical URL、OpenGraph、Breadcrumbコンポーネントを設定
+- `npm run build` ゼロエラー確認済み（35ページ生成）
+
+### 次のエージェント/人間への引き継ぎ事項
+- **human**: お問い合わせフォームを用意する場合、Google Formsを作成して`NEXT_PUBLIC_CONTACT_FORM_URL` をVercel環境変数に追加する
+- **human**: 再デプロイ（`vercel --prod`）して本番反映してください
+- **human**: A8.netで広告主への提携申込みをする際、プライバシーポリシーURL等を求められるので `/privacy` URLを提出できます
+- **next**: おすすめ記事5本（roundups）の作成（バックログ参照）
+
+---
+
 ## [2026-04-11] 初期セットアップ — プロジェクト基盤構築
 
 ### 実施内容

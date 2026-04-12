@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllToolSlugs } from "@/lib/tools";
+import { getAllToolGuideSlugs } from "@/lib/guides";
 import fs from "fs";
 import path from "path";
 
@@ -45,5 +46,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.9,
     })),
+    // ガイドインデックス
+    { url: `${SITE_URL}/guide`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    // 特別ガイド記事
+    { url: `${SITE_URL}/guide/ai-blog-start`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    // ツール別ガイド記事
+    ...getAllToolGuideSlugs().map((slug) => ({
+      url: `${SITE_URL}/guide/${slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    })),
+    // 法的必須ページ
+    { url: `${SITE_URL}/about`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${SITE_URL}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${SITE_URL}/disclaimer`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${SITE_URL}/contact`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
 }

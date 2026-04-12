@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getAllToolSlugs, getToolBySlug, getRelatedTools } from "@/lib/tools";
-import { buildAffiliateUrl, getCtaLabel } from "@/lib/affiliate";
+import { buildAffiliateUrl, getCtaLabel, getImpressionPixelUrl } from "@/lib/affiliate";
+import { getAllToolGuides } from "@/lib/guides";
 import { generateToolJsonLd, generateBreadcrumbJsonLd, getToolPageTitle, getCanonicalUrl } from "@/lib/seo";
 import AffiliateButton from "@/components/AffiliateButton";
 import StarRating from "@/components/StarRating";
 import Breadcrumb from "@/components/Breadcrumb";
 import ToolCard from "@/components/ToolCard";
+import SponsorBanner from "@/components/SponsorBanner";
 
 const SITE_NAME = "AIツール比較ナビ";
 
@@ -59,7 +61,9 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
   const affiliateUrl = buildAffiliateUrl(tool);
   const ctaLabel = getCtaLabel(tool);
+  const impressionPixel = getImpressionPixelUrl(tool);
   const relatedTools = getRelatedTools(tool, 3);
+  const toolGuide = getAllToolGuides().find((g) => g.toolSlug === tool.slug) ?? null;
 
   const toolJsonLd = generateToolJsonLd(tool);
   const breadcrumbJsonLd = generateBreadcrumbJsonLd([
@@ -72,6 +76,10 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      {impressionPixel && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={impressionPixel} alt="" width={1} height={1} className="hidden" />
+      )}
 
       <div className="max-w-4xl mx-auto px-4 py-8">
         <Breadcrumb items={[
@@ -147,6 +155,49 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
               ))}
             </ul>
           </section>
+        </div>
+
+        {/* 対応する使い方ガイドへの誘導 */}
+        {toolGuide && (
+          <Link
+            href={`/guide/${toolGuide.slug}`}
+            className="mt-10 block bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-5 hover:border-green-400 transition-colors"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white text-xl shrink-0">
+                📘
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs font-semibold text-green-700 uppercase tracking-wider">
+                  使い方ガイド
+                </p>
+                <p className="font-bold text-gray-900 mt-0.5 leading-tight">
+                  {tool.name}の使い方完全ガイドを読む
+                </p>
+                <p className="text-xs text-gray-500 mt-1">
+                  {toolGuide.useCases.length}のプロンプト例と使いこなしのコツを紹介
+                </p>
+              </div>
+              <svg
+                className="w-5 h-5 text-green-600 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </div>
+          </Link>
+        )}
+
+        {/* スポンサー枠: インライン（ツール毎にローテーション） */}
+        <div className="mt-10">
+          <SponsorBanner variant="inline" seed={slug} />
         </div>
 
         {/* CTA */}

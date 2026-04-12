@@ -1,8 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getFeaturedTools, getAllTools } from "@/lib/tools";
+import { getFeaturedTools, getAllTools, getToolBySlug, getToolIconUrl } from "@/lib/tools";
+import { getAllToolGuides } from "@/lib/guides";
 import { getCanonicalUrl } from "@/lib/seo";
 import ToolCard from "@/components/ToolCard";
+import SponsorBanner from "@/components/SponsorBanner";
+import ToolIcon from "@/components/ToolIcon";
 
 export const revalidate = 3600;
 
@@ -45,6 +48,7 @@ const COMPARISONS = [
 export default function HomePage() {
   const featured = getFeaturedTools(6);
   const allTools = getAllTools();
+  const toolGuides = getAllToolGuides();
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
@@ -84,6 +88,80 @@ export default function HomePage() {
           )}
         </section>
       )}
+
+      {/* ガイド記事への誘導 */}
+      <section className="mt-16">
+        <Link
+          href="/guide/ai-blog-start"
+          className="block bg-gradient-to-br from-green-500 via-green-600 to-emerald-700 rounded-2xl p-6 md:p-8 text-white hover:shadow-xl transition-shadow"
+        >
+          <div className="flex flex-col md:flex-row md:items-center gap-6">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full">完全ガイド</span>
+                <span className="text-xs text-green-100">読了時間 約10分</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold leading-tight">
+                AIブログの始め方【2026年版】
+              </h2>
+              <p className="mt-2 text-green-50">
+                ChatGPT・Claudeを使って初心者でも月1万円稼ぐ完全ロードマップ
+              </p>
+            </div>
+            <div className="shrink-0 bg-white text-green-700 font-bold py-3 px-6 rounded-lg inline-flex items-center gap-2">
+              ガイドを読む
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        </Link>
+      </section>
+
+      {/* ツール別使い方ガイド */}
+      {toolGuides.length > 0 && (
+        <section className="mt-16">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-gray-900">使い方ガイド</h2>
+            <Link href="/guide" className="text-green-600 hover:text-green-700 text-sm font-medium">
+              すべてのガイドを見る →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {toolGuides.map((guide) => {
+              const tool = getToolBySlug(guide.toolSlug);
+              const iconUrl = tool ? getToolIconUrl(tool) : null;
+              return (
+                <Link
+                  key={guide.slug}
+                  href={`/guide/${guide.slug}`}
+                  className="group bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-green-300 transition-all"
+                >
+                  <div className="flex items-center gap-3">
+                    <ToolIcon iconUrl={iconUrl} name={tool?.name ?? guide.slug} size="sm" />
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bold text-gray-900">{tool?.name ?? guide.slug}</p>
+                      <p className="text-xs text-gray-500">使い方完全ガイド</p>
+                    </div>
+                  </div>
+                  <h3 className="mt-3 text-sm font-semibold text-gray-800 leading-snug line-clamp-2">
+                    {guide.title.replace(/【.*?】/g, "")}
+                  </h3>
+                  <div className="mt-3 flex items-center justify-between text-xs">
+                    <span className="text-gray-400">{guide.useCases.length}のプロンプト例</span>
+                    <span className="text-green-600 font-medium">読む →</span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* スポンサー枠: ヒーロー形式 */}
+      <section className="mt-16">
+        <SponsorBanner variant="hero" />
+      </section>
 
       {/* 比較記事 */}
       <section className="mt-16">

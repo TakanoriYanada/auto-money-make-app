@@ -46,6 +46,22 @@ export function getAllToolSlugs(): string[] {
     .map((f) => f.replace(".json", ""));
 }
 
+/**
+ * ツールのアイコンURLを取得する。
+ * logo_url がローカルパス（/images/...）で実ファイルが未配置のため、
+ * website_url から Google Favicon API 経由でアイコンを自動取得する。
+ * サイズは 128px（表示サイズ 56px の 2倍、Retina対応）。
+ */
+export function getToolIconUrl(tool: Tool): string | null {
+  if (!tool.website_url) return null;
+  try {
+    const domain = new URL(tool.website_url).hostname;
+    return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+  } catch {
+    return null;
+  }
+}
+
 export function getRelatedTools(tool: Tool, limit = 3): Tool[] {
   const allTools = getAllTools().filter((t) => t.slug !== tool.slug);
 
