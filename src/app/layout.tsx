@@ -105,10 +105,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col md:flex-row justify-between gap-2 text-xs">
-              <p>© {new Date().getFullYear()} {SITE_NAME}</p>
+            <div className="mt-8 pt-6 border-t border-gray-100 space-y-2 text-xs">
+              <div className="flex flex-col md:flex-row justify-between gap-2">
+                <p>© {new Date().getFullYear()} {SITE_NAME}</p>
+                <p className="text-gray-400">
+                  当サイトはアフィリエイト広告を利用しています。
+                </p>
+              </div>
               <p className="text-gray-400">
-                当サイトはアフィリエイト広告を利用しています。
+                Amazonのアソシエイトとして、当メディアは適格販売により収入を得ています。
               </p>
             </div>
           </div>

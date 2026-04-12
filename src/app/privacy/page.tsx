@@ -112,6 +112,9 @@ export default function PrivacyPage() {
           <p className="mt-2">
             これらのプログラムは、当サイトに広告を掲載することで、商品・サービス購入時に発生する紹介料を得る仕組みです。当サイト内のリンクから遷移して商品・サービスをご購入・ご利用いただいた場合、当サイトに成果報酬が発生することがあります。
           </p>
+          <p className="mt-3 bg-gray-50 border border-gray-200 rounded-lg p-3 text-sm">
+            Amazonのアソシエイトとして、当メディアは適格販売により収入を得ています。
+          </p>
         </section>
 
         <section>
