@@ -35,8 +35,8 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID;
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID?.trim();
+  const gaId = process.env.NEXT_PUBLIC_GA_ID?.trim();
 
   return (
     <html lang="ja" className={`${notoSansJP.variable}`}>
