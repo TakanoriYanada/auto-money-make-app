@@ -4,7 +4,7 @@ import { getCanonicalUrl } from "@/lib/seo";
 import Breadcrumb from "@/components/Breadcrumb";
 
 const SITE_NAME = "AIツール比較ナビ";
-const PAGE_TITLE = "お問い合わせ | AIツール比較ナビ";
+const PAGE_TITLE = "お問い合わせ";
 const PAGE_DESC = `${SITE_NAME}へのお問い合わせ方法。記事内容の訂正依頼、広告掲載のご相談、その他のお問い合わせはこちらから。`;
 
 // Google Forms フォームURL例（後で人間が差し替え）

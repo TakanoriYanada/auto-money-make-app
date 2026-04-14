@@ -54,17 +54,17 @@ export default function HomePage() {
     <div className="max-w-6xl mx-auto px-4 py-10">
       {/* ヒーローセクション */}
       <section className="text-center py-12 md:py-20">
-        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
           AIツールを<span className="text-green-600">徹底比較</span>
         </h1>
         <p className="mt-4 text-lg text-gray-600 max-w-xl mx-auto">
           ChatGPT・Claude・Geminiなど人気AIツールを料金・機能・使いやすさで比較。あなたに最適な1本が見つかります。
         </p>
-        <div className="mt-8 flex flex-wrap gap-3 justify-center">
-          <Link href="/tools" className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+        <div className="mt-8 flex flex-wrap gap-4 justify-center">
+          <Link href="/tools" className="bg-green-500 hover:bg-green-600 text-white font-bold text-lg py-4 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all">
             ツール一覧を見る
           </Link>
-          <Link href="/compare/chatgpt-vs-claude" className="border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold py-3 px-6 rounded-lg transition-colors">
+          <Link href="/compare/chatgpt-vs-claude" className="border-2 border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold py-4 px-8 rounded-lg transition-colors">
             比較記事を読む
           </Link>
         </div>
@@ -74,7 +74,7 @@ export default function HomePage() {
       {featured.length > 0 && (
         <section className="mt-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">注目のAIツール</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {featured.map((tool) => (
               <ToolCard key={tool.slug} tool={tool} />
             ))}

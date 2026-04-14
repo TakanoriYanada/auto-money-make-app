@@ -27,7 +27,7 @@ export default function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
                 {item.name}
               </Link>
             ) : (
-              <span className="text-gray-900 font-medium truncate">{item.name}</span>
+              <span className="text-gray-900 font-semibold text-base truncate max-w-xs">{item.name}</span>
             )}
           </li>
         ))}

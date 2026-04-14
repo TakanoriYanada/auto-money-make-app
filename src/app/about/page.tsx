@@ -4,7 +4,7 @@ import { getCanonicalUrl } from "@/lib/seo";
 import Breadcrumb from "@/components/Breadcrumb";
 
 const SITE_NAME = "AIツール比較ナビ";
-const PAGE_TITLE = "運営者情報 | AIツール比較ナビ";
+const PAGE_TITLE = "運営者情報";
 const PAGE_DESC = `${SITE_NAME}の運営者情報・サイトの運営方針・お問い合わせ先を記載しています。`;
 
 export const metadata: Metadata = {
@@ -67,13 +67,37 @@ export default function AboutPage() {
 
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">運営者</h2>
-          <p className="text-gray-700">
-            個人運営のサイトです。運営者情報の詳細、お問い合わせ先は
-            <Link href="/contact" className="text-green-600 hover:text-green-700 underline mx-1">
-              お問い合わせページ
-            </Link>
-            をご覧ください。
-          </p>
+          <div className="space-y-3">
+            <p className="text-gray-700">
+              <span className="font-semibold">ハンドル名:</span> AI比較ナビ編集部
+            </p>
+            <p className="text-gray-700 leading-relaxed">
+              2024年より生成AI・SaaSツールの調査・比較レビューを開始。ライター・エンジニア・デザイナーとして10年以上の実務経験を持ち、実際に50以上のAIツールを業務で活用してきた知見をもとに、中立的な視点で情報を発信しています。
+            </p>
+            {/* TODO: Xアカウント開設後に有効化
+            <div className="flex items-center gap-4 text-gray-700">
+              <span className="font-semibold">SNS:</span>
+              <a
+                href="https://twitter.com/ai_hikaku_navi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-green-600 hover:text-green-700 underline inline-flex items-center gap-1"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+                @ai_hikaku_navi
+              </a>
+            </div>
+            */}
+            <p className="text-gray-700">
+              お問い合わせ先は
+              <Link href="/contact" className="text-green-600 hover:text-green-700 underline mx-1">
+                お問い合わせページ
+              </Link>
+              をご覧ください。
+            </p>
+          </div>
         </section>
 
         <section>

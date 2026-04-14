@@ -1,10 +1,18 @@
-import fs from "fs";
-import path from "path";
 import type { Tool } from "@/types";
 
-const TOOLS_DIR = path.join(process.cwd(), "src/data/tools");
+// Server-only imports (fs/path)
+let fs: typeof import("fs") | null = null;
+let path: typeof import("path") | null = null;
+
+if (typeof window === "undefined") {
+  fs = require("fs");
+  path = require("path");
+}
+
+const TOOLS_DIR = typeof window === "undefined" && path ? path.join(process.cwd(), "src/data/tools") : "";
 
 export function getAllTools(): Tool[] {
+  if (typeof window !== "undefined" || !fs || !path || !TOOLS_DIR) return [];
   if (!fs.existsSync(TOOLS_DIR)) return [];
 
   const files = fs
@@ -13,7 +21,7 @@ export function getAllTools(): Tool[] {
 
   return files
     .map((file) => {
-      const raw = fs.readFileSync(path.join(TOOLS_DIR, file), "utf-8");
+      const raw = fs!.readFileSync(path!.join(TOOLS_DIR, file), "utf-8");
       return JSON.parse(raw) as Tool;
     })
     .filter((tool) => tool.status === "active")
@@ -21,6 +29,7 @@ export function getAllTools(): Tool[] {
 }
 
 export function getToolBySlug(slug: string): Tool | null {
+  if (typeof window !== "undefined" || !fs || !path || !TOOLS_DIR) return null;
   const filePath = path.join(TOOLS_DIR, `${slug}.json`);
   if (!fs.existsSync(filePath)) return null;
 
@@ -39,6 +48,7 @@ export function getToolsByCategory(category: string): Tool[] {
 }
 
 export function getAllToolSlugs(): string[] {
+  if (typeof window !== "undefined" || !fs || !TOOLS_DIR) return [];
   if (!fs.existsSync(TOOLS_DIR)) return [];
   return fs
     .readdirSync(TOOLS_DIR)
@@ -48,11 +58,31 @@ export function getAllToolSlugs(): string[] {
 
 /**
  * ツールのアイコンURLを取得する。
- * logo_url がローカルパス（/images/...）で実ファイルが未配置のため、
- * website_url から Google Favicon API 経由でアイコンを自動取得する。
- * サイズは 128px（表示サイズ 56px の 2倍、Retina対応）。
+ *
+ * 優先順位:
+ * 1. tool.logo_url が /images/ または /logos/ で始まる場合はローカル画像として使用
+ * 2. tool.logo_url が https:// で始まる場合は外部URLをそのまま使用
+ * 3. それ以外（空・無効）の場合は Google Favicon API にフォールバック
+ *
+ * ローカル画像は /public/images/tools/{slug}.webp に配置する想定。
+ * Google Favicon は 128px（表示サイズ 56px の 2倍、Retina対応）。
  */
 export function getToolIconUrl(tool: Tool): string | null {
+  // 優先1: ローカル画像パス（public/ 配下に実ファイルがある場合のみ）
+  if (tool.logo_url && (tool.logo_url.startsWith("/images/") || tool.logo_url.startsWith("/logos/"))) {
+    if (fs && path) {
+      const localPath = path.join(process.cwd(), "public", tool.logo_url);
+      if (fs.existsSync(localPath)) return tool.logo_url;
+    }
+    // 実ファイルが無ければ次のフォールバックへ進む
+  }
+
+  // 優先2: 外部URL（https://）
+  if (tool.logo_url && tool.logo_url.startsWith("https://")) {
+    return tool.logo_url;
+  }
+
+  // 優先3: Google Favicon APIフォールバック
   if (!tool.website_url) return null;
   try {
     const domain = new URL(tool.website_url).hostname;
@@ -79,4 +109,15 @@ export function getRelatedTools(tool: Tool, limit = 3): Tool[] {
     .sort((a, b) => b.score - a.score || b.tool.rating - a.tool.rating)
     .slice(0, limit)
     .map((s) => s.tool);
+}
+
+/**
+ * 全ツールから重複なしのカテゴリ一覧を取得する。
+ */
+export function getAllCategories(): string[] {
+  const categoriesSet = new Set<string>();
+  getAllTools().forEach((tool) => {
+    tool.categories.forEach((cat) => categoriesSet.add(cat));
+  });
+  return Array.from(categoriesSet).sort();
 }

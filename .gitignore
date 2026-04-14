@@ -36,6 +36,16 @@ yarn-error.log*
 # vercel
 .vercel
 
+# playwright MCP artifacts (console logs, page snapshots, screenshots)
+/.playwright-mcp/
+/hero-section.png
+
+# evaluator screenshots (large binaries, regenerated each run; reports are in PROGRESS.md)
+/docs/eval-screenshots/
+
+# claude code local settings (per-developer, not shared)
+.claude/settings.local.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

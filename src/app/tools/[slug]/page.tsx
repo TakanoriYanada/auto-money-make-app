@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getAllToolSlugs, getToolBySlug, getRelatedTools } from "@/lib/tools";
+import { getAllToolSlugs, getToolBySlug, getRelatedTools, getToolIconUrl } from "@/lib/tools";
 import { buildAffiliateUrl, getCtaLabel, getImpressionPixelUrl } from "@/lib/affiliate";
 import { getAllToolGuides } from "@/lib/guides";
 import { generateToolJsonLd, generateBreadcrumbJsonLd, getToolPageTitle, getCanonicalUrl } from "@/lib/seo";
@@ -10,6 +10,7 @@ import StarRating from "@/components/StarRating";
 import Breadcrumb from "@/components/Breadcrumb";
 import ToolCard from "@/components/ToolCard";
 import SponsorBanner from "@/components/SponsorBanner";
+import ToolIcon from "@/components/ToolIcon";
 
 const SITE_NAME = "AIツール比較ナビ";
 
@@ -66,6 +67,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
   const impressionPixel = getImpressionPixelUrl(tool);
   const relatedTools = getRelatedTools(tool, 3);
   const toolGuide = getAllToolGuides().find((g) => g.toolSlug === tool.slug) ?? null;
+  const iconUrl = getToolIconUrl(tool);
 
   const toolJsonLd = generateToolJsonLd(tool);
   const breadcrumbJsonLd = generateBreadcrumbJsonLd([
@@ -94,20 +96,36 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         <div className="mt-6 bg-white rounded-2xl border border-gray-200 p-6 md:p-8">
           <div className="flex flex-col md:flex-row md:items-start gap-6">
             <div className="flex-1">
-              <h1 className="text-3xl font-bold text-gray-900">{tool.name}</h1>
-              <p className="text-gray-500 mt-1">{tool.tagline}</p>
-              <StarRating rating={tool.rating} size="lg" className="mt-3" />
+              <div className="flex items-start gap-4">
+                <ToolIcon iconUrl={iconUrl} name={tool.name} size="xl" />
+                <div className="flex-1 min-w-0">
+                  <h1 className="text-4xl md:text-5xl font-bold text-gray-900">{tool.name}</h1>
+                  <p className="text-gray-500 mt-1">{tool.tagline}</p>
+                </div>
+              </div>
+              <StarRating rating={tool.rating} size="lg" className="mt-4" />
               <p className="mt-4 text-gray-700 leading-relaxed">{tool.description}</p>
             </div>
-            {affiliateUrl && (
-              <div className="flex flex-col gap-3 md:min-w-48">
-                <AffiliateButton href={affiliateUrl} label={ctaLabel} toolName={tool.name} size="lg" />
-                <a href={tool.website_url} target="_blank" rel="noopener noreferrer"
-                  className="text-center text-sm text-gray-500 hover:text-gray-700 underline">
-                  公式サイト
+            <div className="flex flex-col gap-3 md:min-w-48">
+              {affiliateUrl ? (
+                <>
+                  <AffiliateButton href={affiliateUrl} label={ctaLabel} toolName={tool.name} size="lg" />
+                  <a href={tool.website_url} target="_blank" rel="noopener noreferrer"
+                    className="text-center text-sm text-gray-500 hover:text-gray-700 underline">
+                    公式サイト
+                  </a>
+                </>
+              ) : (
+                <a
+                  href={tool.website_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center min-h-[56px] px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-colors text-center"
+                >
+                  公式サイトを見る
                 </a>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
 
@@ -203,15 +221,24 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         </div>
 
         {/* CTA */}
-        {affiliateUrl && (
-          <div className="mt-10 bg-gray-900 rounded-2xl p-8 text-center text-white">
-            <p className="text-lg font-semibold">{tool.name}を試してみる</p>
-            <p className="text-gray-400 text-sm mt-1">
-              {tool.has_free_plan ? "無料プランから始められます" : `月額${tool.starting_price_jpy?.toLocaleString() ?? "—"}円〜`}
-            </p>
+        <div className="mt-10 bg-gray-900 rounded-2xl p-8 text-center text-white">
+          <p className="text-lg font-semibold">{tool.name}を試してみる</p>
+          <p className="text-gray-400 text-sm mt-1">
+            {tool.has_free_plan ? "無料プランから始められます" : `月額${tool.starting_price_jpy?.toLocaleString() ?? "—"}円〜`}
+          </p>
+          {affiliateUrl ? (
             <AffiliateButton href={affiliateUrl} label={ctaLabel} toolName={tool.name} size="lg" variant="secondary" className="mt-4" />
-          </div>
-        )}
+          ) : (
+            <a
+              href={tool.website_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center min-h-[56px] px-8 py-3 mt-4 bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-lg transition-colors"
+            >
+              公式サイトを見る
+            </a>
+          )}
+        </div>
 
         {/* 関連ツール */}
         {relatedTools.length > 0 && (

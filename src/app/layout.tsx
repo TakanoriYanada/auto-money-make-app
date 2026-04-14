@@ -64,10 +64,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/" className="font-bold text-lg text-green-600 hover:text-green-700">
               {SITE_NAME}
             </Link>
-            <nav className="flex items-center gap-5 text-sm text-gray-600">
+            <nav className="flex items-center gap-4 md:gap-5 text-sm text-gray-600">
               <Link href="/tools" className="hover:text-green-600 transition-colors">ツール一覧</Link>
               <Link href="/compare" className="hover:text-green-600 transition-colors">比較記事</Link>
-              <Link href="/guide" className="hover:text-green-600 transition-colors hidden sm:inline">ガイド</Link>
+              <Link href="/guide" className="hover:text-green-600 transition-colors">ガイド</Link>
             </nav>
           </div>
         </header>

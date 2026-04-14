@@ -1,7 +1,6 @@
 import type { Tool, ComparisonFrontmatter, RoundupFrontmatter } from "@/types";
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com").trim().replace(/\/$/, "");
-const SITE_NAME = "AIツール比較ナビ";
 
 export function generateToolJsonLd(tool: Tool) {
   return {
@@ -96,7 +95,7 @@ export function generateRoundupItemListJsonLd(
 
 export function getToolPageTitle(tool: Tool): string {
   const year = new Date().getFullYear();
-  return `${tool.name}の評判・料金・機能を徹底解説【${year}年版】| ${SITE_NAME}`;
+  return `${tool.name}の評判・料金・機能を徹底解説【${year}年版】`;
 }
 
 export function getComparisonPageTitle(
@@ -104,12 +103,12 @@ export function getComparisonPageTitle(
   toolB: Tool
 ): string {
   const year = new Date().getFullYear();
-  return `${toolA.name} vs ${toolB.name}【${year}年版】徹底比較｜どっちがおすすめ？| ${SITE_NAME}`;
+  return `${toolA.name} vs ${toolB.name}【${year}年版】徹底比較｜どっちがおすすめ？`;
 }
 
 export function getRoundupPageTitle(category: string, count: number): string {
   const year = new Date().getFullYear();
-  return `${category}おすすめAIツール${count}選【${year}年版】| ${SITE_NAME}`;
+  return `${category}おすすめAIツール${count}選【${year}年版】`;
 }
 
 export function getCanonicalUrl(path: string): string {

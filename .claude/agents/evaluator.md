@@ -155,6 +155,6 @@ testerがPASS/FAILの機械的チェックをするのに対し、あなたは**
 - **自分が実際に買いたい/使いたいと思ったか** を率直に書く。忖度しない
 - testerと役割を混同しない。ビルド・型チェックは扱わない
 - 改善タスクは必ず担当エージェントをタグ付けする（[ui-designer]/[content-writer]/[implementer]/[seo-specialist]）
-- スクリーンショットは `docs/eval-screenshots/[YYYY-MM-DD]/` 配下に保存して参照する
+- スクリーンショットは `docs/eval-screenshots/[YYYY-MM-DD]/` 配下に保存して参照する（※このディレクトリは gitignore 済み。ローカルでの視覚確認用であり、評価結果の本体は PROGRESS.md の文字レポートに残す）
 - 評価は主観でよいが、「なぜそう感じたか」を必ず言語化する
 - 毎回同じペルソナだけを使わない。サイトの成熟度に応じて厳しい評価者を選ぶ

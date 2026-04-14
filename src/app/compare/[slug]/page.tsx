@@ -18,6 +18,7 @@ import AffiliateButton from "@/components/AffiliateButton";
 import StarRating from "@/components/StarRating";
 import Breadcrumb from "@/components/Breadcrumb";
 import SponsorBanner from "@/components/SponsorBanner";
+import FaqAccordion from "@/components/FaqAccordion";
 
 const SITE_NAME = "AIツール比較ナビ";
 
@@ -118,7 +119,8 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
   const faqs = parseFaqFromMdx(content);
   const faqJsonLd = faqs.length > 0 ? generateFaqJsonLd(faqs) : null;
 
-  const title = getComparisonPageTitle(toolA, toolB);
+  const year = new Date().getFullYear();
+  const h1Text = `${toolA.name} vs ${toolB.name}【${year}年版】徹底比較｜どっちがおすすめ？`;
 
   return (
     <>
@@ -133,11 +135,11 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
           { name: `${toolA.name} vs ${toolB.name}` },
         ]} />
 
-        <h1 className="mt-6 text-2xl md:text-3xl font-bold text-gray-900 leading-tight">{title}</h1>
+        <h1 className="mt-6 text-3xl md:text-5xl font-bold text-gray-900 leading-tight">{h1Text}</h1>
         <p className="mt-2 text-sm text-gray-400">最終更新: {frontmatter.last_updated}</p>
 
         {/* 2ツール並列比較ヘッダー */}
-        <div className="mt-8 grid grid-cols-2 gap-4">
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
           {[toolA, toolB].map((tool) => {
             const url = tool === toolA ? urlA : urlB;
             return (
@@ -146,7 +148,7 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
                 <StarRating rating={tool.rating} size="md" className="mt-2 justify-center" />
                 <p className="text-sm text-gray-500 mt-2">{tool.tagline}</p>
                 {url && (
-                  <AffiliateButton href={url} label={getCtaLabel(tool)} toolName={tool.name} size="sm" className="mt-4 w-full justify-center" />
+                  <AffiliateButton href={url} label={getCtaLabel(tool)} toolName={tool.name} size="md" className="mt-4 w-full justify-center" />
                 )}
               </div>
             );
@@ -225,6 +227,14 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
             })}
           </div>
         </section>
+
+        {/* FAQ */}
+        {faqs.length > 0 && (
+          <section className="mt-10">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">よくある質問（FAQ）</h2>
+            <FaqAccordion items={faqs} />
+          </section>
+        )}
 
         {/* 関連リンク */}
         <section className="mt-10 bg-white rounded-xl border border-gray-200 p-6">

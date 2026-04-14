@@ -26,14 +26,14 @@ export default function StarRating({
     <span className={`inline-flex items-center gap-1.5 ${className}`}>
       <span className={`flex items-center gap-0.5 ${sizes.text}`}>
         {Array.from({ length: fullStars }).map((_, i) => (
-          <span key={`full-${i}`} className="text-yellow-400">
+          <span key={`full-${i}`} className="text-green-500">
             ★
           </span>
         ))}
         {hasHalfStar && (
           <span className="relative text-gray-300">
             ★
-            <span className="absolute inset-0 overflow-hidden text-yellow-400" style={{ width: '50%' }}>
+            <span className="absolute inset-0 overflow-hidden text-green-500" style={{ width: '50%' }}>
               ★
             </span>
           </span>
