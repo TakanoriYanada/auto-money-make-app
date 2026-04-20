@@ -157,3 +157,37 @@ export function parseFaqFromMdx(content: string): { question: string; answer: st
 
   return faqs;
 }
+
+export function generateWebSiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "AIツール比較ナビ",
+    url: SITE_URL,
+    description: "ChatGPT・Claude・Gemini・Perplexity AIなど人気AIツールを料金・機能・使いやすさで徹底比較。初心者にもわかりやすく目的別のおすすめを紹介します。",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/tools?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+}
+
+export function generateOrganizationJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "AIツール比較ナビ",
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.png`,
+    description: "AIツールの比較・レビュー情報を提供するメディア",
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "Customer Service",
+      url: `${SITE_URL}/contact`,
+    },
+  };
+}

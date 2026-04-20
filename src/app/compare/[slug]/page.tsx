@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import fs from "fs";
 import path from "path";
-import { getToolBySlug } from "@/lib/tools";
+import { getToolBySlug, getToolIconUrl } from "@/lib/tools";
 import { buildAffiliateUrl, getCtaLabel } from "@/lib/affiliate";
+import { getRelatedComparisons, getComparisonBySlug } from "@/lib/comparisons";
 import {
   generateBreadcrumbJsonLd,
   getComparisonPageTitle,
@@ -19,6 +20,7 @@ import StarRating from "@/components/StarRating";
 import Breadcrumb from "@/components/Breadcrumb";
 import SponsorBanner from "@/components/SponsorBanner";
 import FaqAccordion from "@/components/FaqAccordion";
+import ToolIcon from "@/components/ToolIcon";
 
 const SITE_NAME = "AIツール比較ナビ";
 
@@ -122,6 +124,9 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
   const year = new Date().getFullYear();
   const h1Text = `${toolA.name} vs ${toolB.name}【${year}年版】徹底比較｜どっちがおすすめ？`;
 
+  const currentComparison = getComparisonBySlug(slug);
+  const relatedComparisons = currentComparison ? getRelatedComparisons(currentComparison, 3) : [];
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
@@ -139,7 +144,7 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
         <p className="mt-2 text-sm text-gray-400">最終更新: {frontmatter.last_updated}</p>
 
         {/* 2ツール並列比較ヘッダー */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[toolA, toolB].map((tool) => {
             const url = tool === toolA ? urlA : urlB;
             return (
@@ -190,7 +195,7 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
         </div>
 
         {/* 各ツールのメリット */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
           {[toolA, toolB].map((tool) => (
             <section key={tool.slug} className="bg-white border border-gray-200 rounded-xl p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-3">{tool.name}のメリット</h2>
@@ -208,7 +213,7 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
         {/* 結論 */}
         <section className="mt-10 bg-gray-900 rounded-2xl p-8 text-white">
           <h2 className="text-xl font-bold mb-4">結論：どちらを選ぶべきか？</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[toolA, toolB].map((tool) => {
               const url = tool === toolA ? urlA : urlB;
               return (
@@ -228,11 +233,83 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
 
+        {/* 両ツールCTAボタン */}
+        <section className="mt-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[toolA, toolB].map((tool) => {
+              const url = tool === toolA ? urlA : urlB;
+              return (
+                <div key={tool.slug} className="bg-white border-2 border-gray-200 rounded-xl p-6 text-center">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{tool.name}</h3>
+                  <p className="text-sm text-gray-500 mb-4">{tool.tagline}</p>
+                  {url ? (
+                    <AffiliateButton href={url} label={getCtaLabel(tool)} toolName={tool.name} size="lg" className="w-full justify-center" />
+                  ) : (
+                    <a
+                      href={tool.website_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center w-full min-h-[56px] px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-colors"
+                    >
+                      公式サイトを見る →
+                    </a>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
         {/* FAQ */}
         {faqs.length > 0 && (
           <section className="mt-10">
             <h2 className="text-xl font-bold text-gray-900 mb-4">よくある質問（FAQ）</h2>
             <FaqAccordion items={faqs} />
+          </section>
+        )}
+
+        {/* 関連する比較記事 */}
+        {relatedComparisons.length > 0 && (
+          <section className="mt-10">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">関連する比較記事</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {relatedComparisons.map((comp) => {
+                const compToolA = getToolBySlug(comp.tool_a);
+                const compToolB = getToolBySlug(comp.tool_b);
+                if (!compToolA || !compToolB) return null;
+
+                const iconUrlA = getToolIconUrl(compToolA);
+                const iconUrlB = getToolIconUrl(compToolB);
+
+                return (
+                  <Link
+                    key={comp.slug}
+                    href={`/compare/${comp.slug}`}
+                    className="group bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-green-300 transition-all"
+                  >
+                    <div className="flex items-center justify-center gap-3 mb-2">
+                      <ToolIcon iconUrl={iconUrlA} name={compToolA.name} size="sm" />
+                      <span className="text-xs font-bold text-gray-400">VS</span>
+                      <ToolIcon iconUrl={iconUrlB} name={compToolB.name} size="sm" />
+                    </div>
+                    <h3 className="text-sm font-bold text-gray-900 text-center leading-snug">
+                      {compToolA.name} vs {compToolB.name}
+                    </h3>
+                    <p className="text-xs text-gray-500 mt-2 text-center line-clamp-2">
+                      {comp.description}
+                    </p>
+                    <div className="mt-3 text-xs text-green-600 font-medium text-center group-hover:underline">
+                      比較を読む →
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+            <div className="text-center mt-6">
+              <Link href="/compare" className="text-green-600 hover:text-green-700 font-medium text-sm">
+                すべての比較記事を見る →
+              </Link>
+            </div>
           </section>
         )}
 

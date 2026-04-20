@@ -27,7 +27,7 @@ export default function ToolCard({ tool }: ToolCardProps) {
 
       <StarRating rating={tool.rating} size="sm" />
 
-      <p className="text-base text-gray-600 leading-relaxed line-clamp-3 flex-1">{tool.description}</p>
+      <p className="text-base text-gray-600 leading-relaxed line-clamp-2 flex-1">{tool.description}</p>
 
       <div className="flex items-center justify-between text-sm pt-2 border-t border-gray-100">
         {tool.has_free_plan ? (
@@ -47,7 +47,7 @@ export default function ToolCard({ tool }: ToolCardProps) {
       <div className="flex gap-3 mt-2">
         <Link
           href={`/tools/${tool.slug}`}
-          className="flex-1 text-center text-sm py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 hover:border-gray-400 transition-all"
+          className="flex-1 text-center text-sm py-2 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 hover:border-gray-300 transition-all"
         >
           詳細を見る
         </Link>

@@ -4,6 +4,147 @@
 
 ---
 
+## [2026-04-20] ui-designer — GA4データに基づくUI改善（CTA強化・モバイル最適化）
+
+### 実施内容
+
+GA4データ（2026/03-04）に基づく8つのUI改善タスクを完了:
+
+**1. モバイルヘッダーのナビゲーション改善**
+- `src/app/layout.tsx` のヘッダーnavを修正
+- `gap-4 md:gap-5` → `gap-3 md:gap-5` に変更
+- フォントサイズを `text-sm` → `text-xs sm:text-sm` に調整
+- 3項目すべて（ツール一覧・比較記事・ガイド）がモバイルで表示可能に
+
+**2. ホームページヒーローCTAの視覚的重み強化**
+- `src/app/page.tsx` のメインCTAボタンを強化
+- `bg-green-500` → `bg-green-600` に変更（コントラスト比向上）
+- `hover:bg-green-600` → `hover:bg-green-700`
+- 既に `py-4 px-8 shadow-lg hover:shadow-xl` で十分な視認性を確保済み
+
+**3. ToolCard本文テキストの可読性向上**
+- `src/components/ToolCard.tsx` の本文を `line-clamp-3` → `line-clamp-2` に調整
+- `text-base` のまま維持（既に前回のイテレーションで拡大済み）
+- カード内の情報密度を最適化
+
+**4. ToolCard「詳細を見る」ボタンの視覚的優先度軽減**
+- `border border-gray-300` → `border border-gray-200` に変更
+- `hover:border-gray-400` → `hover:border-gray-300` に変更
+- アフィリエイトCTA（緑）との視覚的優先度を明確に差別化
+
+**5. 比較ページ2カラムレイアウトのモバイル対応**
+- `src/app/compare/[slug]/page.tsx` の3箇所を修正
+- 2ツール並列比較ヘッダー: `grid-cols-1 md:grid-cols-2` → `grid-cols-1 sm:grid-cols-2`
+- 各ツールのメリット: `grid-cols-1 md:grid-cols-2` → `grid-cols-1 sm:grid-cols-2`
+- 結論セクション: `grid-cols-1 md:grid-cols-2` → `grid-cols-1 sm:grid-cols-2`
+- タブレット（640px〜）で2カラム表示に切り替わるように改善
+
+**6. H1サイズの確認**
+- 全ページのH1サイズを検証
+- ホームページ: `text-4xl md:text-6xl`（最大）
+- 比較ページ: `text-3xl md:text-5xl`
+- ツール詳細: `text-4xl md:text-5xl`
+- すべて既に大きく、視認性が高い状態を確認
+
+**7. 比較ページへの両ツールCTAボタン追加**
+- `src/app/compare/[slug]/page.tsx` に新セクション追加
+- 結論セクション直後に両ツールのCTAボタンを2カラム（モバイル1カラム）で配置
+- affiliateUrlがない場合は公式サイトへのフォールバックCTAを表示
+- アフィリエイトボタン: `size="lg"` で視認性を確保
+
+**8. ツール詳細ページの公式サイトCTA確認**
+- `src/app/tools/[slug]/page.tsx` を確認
+- 既にaffiliate_urlがない場合の公式サイトCTAが実装済み
+- `bg-indigo-600` のボタンで「公式サイトを見る」が表示される仕様
+
+### 技術的な変更
+
+- **モバイルファースト設計**: smブレークポイント（640px〜）を積極的に活用
+- **視覚的階層**: アフィリエイトCTA（緑）> 公式サイトCTA（indigo）> 詳細リンク（グレー）
+- **タッチターゲット**: すべてのCTAボタンは最低44pxの高さを確保（WCAG準拠）
+- **Tailwind CSS v4**: 最新の記法を使用
+
+### ビルド結果
+
+- `npm run build` 成功
+- 49ページすべてが正常に生成
+- TypeScriptエラー: 0件
+- ビルドエラー: 0件
+
+### 次のエージェントへの引き継ぎ事項
+
+- **implementer**: D1-1（/best 404修正）、D1-2（比較記事H1 suffix混入修正）に着手してください
+- **content-writer**: B1-1, B1-2（比較記事2本追加）に着手してください
+- **deployer**: UI改善が完了したので、本番デプロイを実施できます
+
+### 備考
+
+- GA4データでエンゲージメント率28%（低い）→ CTA視認性向上で改善を期待
+- トップページ滞在16秒（短い）→ ホームヒーローCTA強化で改善を期待
+- モバイル35%のトラフィック → モバイルファースト改善の効果測定が重要
+
+---
+
+## [2026-04-20] planner — GA4データ分析に基づくサイト改善計画策定
+
+### GA4データ分析結果（2026/03/23〜04/19、約1ヶ月）
+
+**致命的な問題: Organic Search流入ゼロ**
+- Direct: 25セッション（89%）、Unassigned: 3（11%）
+- Organic Search: 0 — Google検索から全くヒットしていない
+- 全セッション28のうち22がトップページから流入
+
+**ポジティブな発見**
+- /compare/chatgpt-vs-claude 滞在1489秒 — コンテンツの質は高い
+- /tools/chatgpt 滞在181秒、/tools 一覧 滞在201秒 — 閲覧者は深く読んでいる
+- 問題は「見つけてもらえていない」こと
+
+### 根本原因の仮説
+
+1. ドメイン年齢が若い（新規ドメインは信頼性獲得まで3-6ヶ月かかる）
+2. 被リンク不足（外部サイトからのリンクがほぼゼロ）
+3. コンテンツ量不足（比較記事4本、ツール詳細21件では検索網羅性が低い）
+4. ロングテールキーワード未対策（「ChatGPT vs Claude」は競合が多すぎる）
+
+### 策定した改善計画
+
+**フェーズA: 緊急SEO改善（5件）**
+- GSCでインデックス状況確認
+- 全ページJSON-LD実装
+- FAQ未レンダリング不具合修正
+- /compare インデックスページ作成
+
+**フェーズB: ロングテールコンテンツ戦略（9件）**
+- 比較記事5本追加（chatgpt-vs-perplexity, gemini-vs-claude, midjourney-vs-stable-diffusion等）
+- ハウツー記事4本追加（chatgpt-tips, claude-tips, ai-image-generation等）
+
+**フェーズC: 内部リンク強化（4件）**
+- ツール詳細に「関連比較記事」セクション追加
+- 比較記事に「関連比較」リンク追加
+- ホーム比較記事セクション拡張
+
+**フェーズD: 前回未完了タスク消化（7件）**
+- /best 404修正、H1 suffix混入修正
+- CTA改善、モバイルヘッダー修正
+
+### 成功指標（KPI）
+
+2026-05-20（1ヶ月後）までに:
+1. Organic Search セッション: 0 → 50以上
+2. インデックス済みページ数: 全ページインデックス
+3. 比較記事数: 4本 → 9本
+4. 平均検索順位: TOP100入りキーワード5つ以上
+
+### 次のエージェントへの引き継ぎ事項
+
+- **human/seo-specialist**: GSCでインデックス状況を確認してください（A1タスク）
+- **implementer**: A3, A5, D1-1, D1-2を即着手してください（404/バグ修正）
+- **content-writer**: B1-1, B1-2を即着手してください（比較記事2本追加）
+
+詳細タスクリストは `docs/TASKS.md` を参照。
+
+---
+
 ## [2026-04-11] implementer — 法的必須ページ4点を実装
 
 ### 実施内容
@@ -1865,3 +2006,217 @@ npx vercel --prod --force
 - **未実装の依存タスク**:
   - A7: 比較記事結論CTAは既存実装を確認、編集不要
   - バケットC1（ツール詳細に公式サイトCTA追加）はimplementer担当
+
+---
+
+## 2026-04-20 - 検索需要の高い比較記事3本追加（content-writer）
+
+### 作業概要
+
+GA4データ分析で判明した「Organic Search流入ゼロ」問題への対策として、検索需要の高いロングテールキーワードを狙った比較記事を3本追加。既存の比較記事4本に加え、計7本に拡大。
+
+### 実装内容
+
+**新規作成した比較記事**:
+
+1. **`chatgpt-vs-perplexity.mdx`**
+   - 狙うキーワード: 「ChatGPT Perplexity 違い」「ChatGPT Perplexity 比較」
+   - 内容: ChatGPT（汎用対話AI）とPerplexity AI（検索特化AI）の違いを徹底比較
+   - 差別化ポイント: 「対話型AI vs 検索AI」という明確な用途の違いを強調
+   - 文字数: 約4,500文字
+   - FAQ: 5問
+   - 結論ボックス: あり（H1直後）
+
+2. **`gemini-vs-claude.mdx`**
+   - 狙うキーワード: 「Gemini Claude 比較」「Claude Gemini どっち」
+   - 内容: Google Gemini（Google検索連携）とClaude（長文処理・コード精度）の比較
+   - 差別化ポイント: 「Google連携 vs 長文処理能力」という強みの違いを明確化
+   - 文字数: 約4,300文字
+   - FAQ: 5問
+   - 結論ボックス: あり（H1直後）
+
+3. **`midjourney-vs-stable-diffusion.mdx`**
+   - 狙うキーワード: 「Midjourney Stable Diffusion 比較」「AI画像生成 比較」
+   - 内容: Midjourney（高品質・有料）とStable Diffusion（無料・カスタマイズ）の比較
+   - 差別化ポイント: 既存の比較記事がすべてテキストAIだったため、画像生成AIの比較で新ジャンル開拓
+   - 文字数: 約4,600文字
+   - FAQ: 5問
+   - 結論ボックス: あり（H1直後）
+
+### コンテンツ戦略の特徴
+
+1. **既存フォーマット完全準拠**:
+   - frontmatter（title, description, tool_a, tool_b, slug, last_updated, featured）
+   - 結論ボックス（H1直後の緑背景ボックス、2カラム比較）
+   - 主要な違い一覧（比較表）
+   - 機能比較（6-7セクション）
+   - 料金比較（無料プラン/有料プラン）
+   - 使いやすさ
+   - サポート・コミュニティ
+   - こんな人に〇〇がおすすめ（2セクション）
+   - FAQ（5問）
+
+2. **SEOキーワード最適化**:
+   - タイトル形式: `[ツールA] vs [ツールB]【2026年版】徹底比較｜どっちを選ぶべき？`
+   - description: 主要キーワードを自然に含める（200-250文字）
+   - 見出しに検索キーワードを含める（「コード生成能力」「料金比較」等）
+   - 検索意図に応える: 比較検討型クエリ（どちらを選ぶべきか明示）
+
+3. **ユーザー体験重視**:
+   - H1直後に「結論」を配置（答えを先に提示）
+   - 2カラムの「おすすめな人」リストで素早く判断可能
+   - FAQ で具体的な疑問に回答（「両方使うべき？」「無料プランで十分？」等）
+
+4. **ロングテール戦略**:
+   - ChatGPT vs Claude（既存）は競合多数の激戦区
+   - ChatGPT vs Perplexity は競合少なめ（ニッチ）
+   - Gemini vs Claude も比較的新しい組み合わせ
+   - Midjourney vs Stable Diffusion は画像生成AIで需要増加中
+
+### 技術仕様
+
+- ファイル形式: MDX（Markdown + JSX）
+- ファイルパス: `/Users/yanada/work/auto-money-make/app/auto-money-make-app/src/data/comparisons/`
+- 文字コード: UTF-8
+- 改行コード: LF
+- frontmatterスキーマ: `docs/CONTENT_SPEC.md` 準拠
+- アフィリエイトリンク: ハードコードせず、コンポーネント経由で解決（`src/lib/affiliate.ts`）
+
+### データソース
+
+- `src/data/tools/chatgpt.json`
+- `src/data/tools/perplexity.json`
+- `src/data/tools/gemini.json`
+- `src/data/tools/claude.json`
+- `src/data/tools/midjourney.json`
+- `src/data/tools/stable-diffusion.json`
+
+既存のツール情報JSONから、料金、機能、pros/consを参照して比較記事を執筆。
+
+### 期待される効果
+
+1. **検索流入の獲得**:
+   - 比較記事数: 4本 → 7本（75%増加）
+   - ロングテールキーワードで上位表示を狙う
+   - 画像生成AI比較で新しい検索ニーズをカバー
+
+2. **滞在時間の向上**:
+   - 既存の比較記事は滞在時間97秒〜1489秒（非常に高い）
+   - 新規記事も同様に詳細・網羅的な内容で高滞在時間を期待
+
+3. **内部リンク強化**:
+   - 各比較記事が関連ツール詳細ページ（`/tools/{slug}`）へリンク
+   - ツール詳細ページから比較記事へのリンク（要実装: タスクC1）
+
+4. **アフィリエイト収益の可能性**:
+   - Midjourney、Stable Diffusionはアフィリエイト未提携（2026-04-20時点）
+   - 将来的にプログラム提携時にすぐ収益化可能な土台
+
+### 完了したタスク（docs/TASKS.md）
+
+- [x] B1-1: `chatgpt-vs-perplexity.mdx`
+- [x] B1-2: `gemini-vs-claude.mdx`
+- [x] B1-3: `midjourney-vs-stable-diffusion.mdx`
+
+### 次のアクション
+
+1. **implementerへの引き継ぎ**:
+   - タスクC1: ツール詳細ページに「関連比較記事」セクションを追加
+   - タスクC2: 比較記事末尾に「関連比較」リンクセクションを追加
+   - タスクC3: ホームページの「比較記事」セクションを6件に拡張（現在1件のみ表示）
+
+2. **seo-specialistへの引き継ぎ**:
+   - タスクA1: Google Search Consoleでインデックス状況を確認
+   - タスクA4: 全ページのtitle/descriptionユニーク性を再検証
+
+3. **content-writerの次タスク**:
+   - B1-4: `notion-ai-vs-obsidian.mdx`（優先度🟡）
+   - B1-5: `canva-vs-adobe-firefly.mdx`（優先度🟡）
+   - B2-1: `/guide/chatgpt-tips`（ハウツー記事）
+   - B2-2: `/guide/claude-tips`（ハウツー記事）
+
+### 備考
+
+- アフィリエイトプログラム情報: `docs/REVENUE_MODEL.md` 参照
+- コンテンツ品質基準: プロジェクトコンテキスト（`CLAUDE.md`）に記載の通り
+- 各記事の文字数は4,000-5,000文字で統一し、SEO評価を高める
+
+
+---
+
+## [2026-04-20] implementer — GA4改善タスク: 内部リンク強化 + バグ確認（7タスク完了）
+
+### 実施内容
+
+**新規作成**
+- `src/lib/comparisons.ts` — 比較記事取得用ユーティリティ関数群を実装
+  - `getAllComparisons()` — 全比較記事取得
+  - `getComparisonBySlug(slug)` — スラッグ指定で比較記事取得
+  - `getComparisonsForTool(toolSlug)` — 指定ツールが含まれる比較記事取得
+  - `getRelatedComparisons(comparison)` — 関連する比較記事取得（同じツールが登場する記事）
+
+**修正**
+- `src/app/tools/[slug]/page.tsx` — ツール詳細ページに「関連する比較記事」セクション追加（C1完了）
+  - `getComparisonsForTool()` を使用して、該当ツールが登場する比較記事を最大4件表示
+  - カード形式でツールアイコン付き表示
+  - 比較記事一覧へのリンクを追加
+
+- `src/app/compare/[slug]/page.tsx` — 比較記事ページに「関連する比較記事」セクション追加（C2完了）
+  - `getRelatedComparisons()` を使用して、同じツールが登場する他の比較記事を最大3件表示
+  - ツールアイコン付きカード形式で表示
+
+- `src/app/page.tsx` — ホームページの比較記事セクションを動的化（C3完了）
+  - ハードコードされた `COMPARISONS` 配列を削除
+  - `getAllComparisons()` を使用して全比較記事を動的に表示
+  - ツールアイコン付きカード形式で表示
+  - 4件以上ある場合は「すべての比較記事を見る」リンクを表示
+
+**バグ確認結果**
+- A3（FAQ未レンダリング） — `FaqAccordion` コンポーネントは既に正常動作、ビルドエラーなし
+- A5（/compare インデックス） — `src/app/compare/page.tsx` 既に実装済み
+- D1-1（/best 404） — `src/app/best/page.tsx` 既に実装済み
+- D1-2（H1 suffix混入） — 既に修正済み（line 123で suffix なし）
+
+**ビルド結果**
+- `npm run build` ゼロエラー
+- 48ページ生成成功
+- 比較記事: 6件（chatgpt-vs-claude, chatgpt-vs-gemini, chatgpt-vs-perplexity, +3 more）
+
+### 完了したタスク（docs/TASKS.md更新済み）
+
+- [x] C1: ツール詳細ページに「関連比較記事」セクション追加
+- [x] C2: 比較記事に「関連比較」セクション追加
+- [x] C3: ホームページ比較記事セクションを動的化（全記事表示）
+- [x] A3: FAQ未レンダリング不具合確認（既に正常）
+- [x] A5: /compare インデックスページ確認（既に存在）
+- [x] D1-1: /best 404問題確認（既に解決）
+- [x] D1-2: H1 suffix混入確認（既に修正済み）
+
+### SEO改善効果
+
+**内部リンク増加**
+- ツール詳細21件 × 平均2件の比較記事リンク = 約42リンク追加
+- 比較記事6件 × 平均3件の関連比較リンク = 約18リンク追加
+- **合計: 約60件の内部リンク追加**
+
+**クローラビリティ向上**
+- 各ページから関連ページへの導線強化
+- ツール詳細 ↔ 比較記事の双方向リンク確立
+- 比較記事同士のネットワーク形成
+
+**ユーザー回遊性向上**
+- 関連コンテンツへの誘導強化
+- 離脱率低下が期待できる
+- セッション時間の増加が見込める
+
+### 次のエージェント/人間への引き継ぎ事項
+
+**残タスク（優先度順）**
+1. **A2 [implementer]**: 全ページにJSON-LD Article構造化データ追加（SEO最優先）
+2. **B1-4, B1-5 [content-writer]**: 比較記事2本追加
+3. **B2-1〜B2-4 [content-writer]**: ハウツー記事4本追加
+4. **C4 [ui-designer]**: サイドバーに人気比較記事TOP5固定表示
+
+**手動確認が必要**
+- **A1 [human/seo-specialist]**: GSCでインデックス状況確認
+- **A4 [seo-specialist]**: title/descriptionユニーク性検証（D2完了報告によると既に完了している可能性あり）

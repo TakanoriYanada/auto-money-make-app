@@ -2,7 +2,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getFeaturedTools, getAllTools, getToolBySlug, getToolIconUrl } from "@/lib/tools";
 import { getAllToolGuides } from "@/lib/guides";
-import { getCanonicalUrl } from "@/lib/seo";
+import { getAllComparisons } from "@/lib/comparisons";
+import { getCanonicalUrl, generateWebSiteJsonLd, generateOrganizationJsonLd } from "@/lib/seo";
 import ToolCard from "@/components/ToolCard";
 import SponsorBanner from "@/components/SponsorBanner";
 import ToolIcon from "@/components/ToolIcon";
@@ -38,20 +39,20 @@ export const metadata: Metadata = {
   },
 };
 
-const COMPARISONS = [
-  { slug: "chatgpt-vs-claude", title: "ChatGPT vs Claude 徹底比較", desc: "2大AIチャットを機能・料金・使いやすさで比較" },
-  { slug: "chatgpt-vs-gemini", title: "ChatGPT vs Gemini 徹底比較", desc: "OpenAI vs Googleの頂上決戦" },
-  { slug: "notion-vs-obsidian", title: "Notion vs Obsidian 徹底比較", desc: "ノートアプリの2大巨頭を比較" },
-  { slug: "cursor-vs-github-copilot", title: "Cursor vs GitHub Copilot 比較", desc: "AIコーディングツールどちらがおすすめ？" },
-];
-
 export default function HomePage() {
   const featured = getFeaturedTools(6);
   const allTools = getAllTools();
   const toolGuides = getAllToolGuides();
+  const allComparisons = getAllComparisons();
+
+  const webSiteJsonLd = generateWebSiteJsonLd();
+  const organizationJsonLd = generateOrganizationJsonLd();
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+      <div className="max-w-6xl mx-auto px-4 py-10">
       {/* ヒーローセクション */}
       <section className="text-center py-12 md:py-20">
         <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
@@ -61,7 +62,7 @@ export default function HomePage() {
           ChatGPT・Claude・Geminiなど人気AIツールを料金・機能・使いやすさで比較。あなたに最適な1本が見つかります。
         </p>
         <div className="mt-8 flex flex-wrap gap-4 justify-center">
-          <Link href="/tools" className="bg-green-500 hover:bg-green-600 text-white font-bold text-lg py-4 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all">
+          <Link href="/tools" className="bg-green-600 hover:bg-green-700 text-white font-bold text-lg py-4 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all">
             ツール一覧を見る
           </Link>
           <Link href="/compare/chatgpt-vs-claude" className="border-2 border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold py-4 px-8 rounded-lg transition-colors">
@@ -164,22 +165,49 @@ export default function HomePage() {
       </section>
 
       {/* 比較記事 */}
-      <section className="mt-16">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">人気の比較記事</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {COMPARISONS.map((c) => (
-            <Link
-              key={c.slug}
-              href={`/compare/${c.slug}`}
-              className="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow"
-            >
-              <h3 className="font-semibold text-gray-900">{c.title}</h3>
-              <p className="text-sm text-gray-500 mt-1">{c.desc}</p>
-              <span className="text-green-600 text-sm mt-3 inline-block">読む →</span>
-            </Link>
-          ))}
-        </div>
-      </section>
+      {allComparisons.length > 0 && (
+        <section className="mt-16">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-gray-900">人気の比較記事</h2>
+            {allComparisons.length > 4 && (
+              <Link href="/compare" className="text-green-600 hover:text-green-700 text-sm font-medium">
+                すべての比較記事を見る →
+              </Link>
+            )}
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {allComparisons.map((comp) => {
+              const toolA = getToolBySlug(comp.tool_a);
+              const toolB = getToolBySlug(comp.tool_b);
+              if (!toolA || !toolB) return null;
+
+              const iconUrlA = getToolIconUrl(toolA);
+              const iconUrlB = getToolIconUrl(toolB);
+
+              return (
+                <Link
+                  key={comp.slug}
+                  href={`/compare/${comp.slug}`}
+                  className="group bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-green-300 transition-all"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <ToolIcon iconUrl={iconUrlA} name={toolA.name} size="sm" />
+                    <span className="text-xs font-bold text-gray-400">VS</span>
+                    <ToolIcon iconUrl={iconUrlB} name={toolB.name} size="sm" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 leading-snug">
+                    {toolA.name} vs {toolB.name}
+                  </h3>
+                  <p className="text-sm text-gray-500 mt-2 line-clamp-2">{comp.description}</p>
+                  <span className="text-green-600 text-sm mt-3 inline-block font-medium group-hover:underline">
+                    比較を読む →
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* 特徴説明 */}
       <section className="mt-16 bg-white rounded-2xl border border-gray-200 p-8">
@@ -198,6 +226,7 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

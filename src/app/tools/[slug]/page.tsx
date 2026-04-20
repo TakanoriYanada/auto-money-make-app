@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getAllToolSlugs, getToolBySlug, getRelatedTools, getToolIconUrl } from "@/lib/tools";
 import { buildAffiliateUrl, getCtaLabel, getImpressionPixelUrl } from "@/lib/affiliate";
 import { getAllToolGuides } from "@/lib/guides";
+import { getComparisonsForTool } from "@/lib/comparisons";
 import { generateToolJsonLd, generateBreadcrumbJsonLd, getToolPageTitle, getCanonicalUrl } from "@/lib/seo";
 import AffiliateButton from "@/components/AffiliateButton";
 import StarRating from "@/components/StarRating";
@@ -68,6 +69,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
   const relatedTools = getRelatedTools(tool, 3);
   const toolGuide = getAllToolGuides().find((g) => g.toolSlug === tool.slug) ?? null;
   const iconUrl = getToolIconUrl(tool);
+  const relatedComparisons = getComparisonsForTool(tool.slug, 4);
 
   const toolJsonLd = generateToolJsonLd(tool);
   const breadcrumbJsonLd = generateBreadcrumbJsonLd([
@@ -239,6 +241,48 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
             </a>
           )}
         </div>
+
+        {/* 関連する比較記事 */}
+        {relatedComparisons.length > 0 && (
+          <section className="mt-12">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">{tool.name}の比較記事</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {relatedComparisons.map((comp) => {
+                const otherToolSlug = comp.tool_a === tool.slug ? comp.tool_b : comp.tool_a;
+                const otherTool = getToolBySlug(otherToolSlug);
+                if (!otherTool) return null;
+
+                return (
+                  <Link
+                    key={comp.slug}
+                    href={`/compare/${comp.slug}`}
+                    className="group bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-green-300 transition-all"
+                  >
+                    <div className="flex items-center gap-3 mb-2">
+                      <ToolIcon iconUrl={iconUrl} name={tool.name} size="sm" />
+                      <span className="text-xs font-bold text-gray-400">VS</span>
+                      <ToolIcon iconUrl={getToolIconUrl(otherTool)} name={otherTool.name} size="sm" />
+                    </div>
+                    <h3 className="text-sm font-bold text-gray-900 leading-snug">
+                      {tool.name} vs {otherTool.name}
+                    </h3>
+                    <p className="text-xs text-gray-500 mt-1 line-clamp-2">
+                      {comp.description}
+                    </p>
+                    <div className="mt-3 text-xs text-green-600 font-medium group-hover:underline">
+                      比較を読む →
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+            <div className="text-center mt-6">
+              <Link href="/compare" className="text-green-600 hover:text-green-700 font-medium text-sm">
+                すべての比較記事を見る →
+              </Link>
+            </div>
+          </section>
+        )}
 
         {/* 関連ツール */}
         {relatedTools.length > 0 && (

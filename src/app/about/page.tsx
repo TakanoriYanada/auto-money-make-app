@@ -5,7 +5,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 
 const SITE_NAME = "AIツール比較ナビ";
 const PAGE_TITLE = "運営者情報";
-const PAGE_DESC = `${SITE_NAME}の運営者情報・サイトの運営方針・お問い合わせ先を記載しています。`;
+const PAGE_DESC = "AIツール比較ナビの運営者情報、サイトの運営方針、編集ポリシー、お問い合わせ先を掲載。10年以上の実務経験とAIツール活用実績に基づき、公平・正確な比較情報をお届けします。";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
