@@ -20,8 +20,11 @@ deployer エージェントはこのファイルに `FILL_IN` が残っている
 
 ### もしもアフィリエイト
 - **登録URL**: https://af.moshimo.com/
-- **パートナーID（a_id）**: `5481795`
-- **提携済みプログラム**: 楽天市場（p_id=54, pc_id=54, pl_id=621）
+- **パートナーID（a_id）楽天用**: `5481795`
+- **パートナーID（a_id）Amazon用**: `5481797`
+- **提携済みプログラム**:
+  - 楽天市場（p_id=54, pc_id=54, pl_id=621）
+  - Amazon（p_id=170, pc_id=185, pl_id=4161）
 - **メモ**: Amazonや楽天商品のアフィリエイトも一括管理できる
 
 ---
@@ -66,7 +69,8 @@ deployer エージェントはこのファイルに `FILL_IN` が残っている
 # ローカル開発用（.env.local）
 AFFILIATE_ID_A8=your_a8_member_id
 AFFILIATE_ID_VC=your_vc_publisher_id
-AFFILIATE_ID_MOSHIMO=your_moshimo_partner_id
+AFFILIATE_ID_MOSHIMO=your_moshimo_partner_id_rakuten
+AFFILIATE_ID_MOSHIMO_AMAZON=your_moshimo_partner_id_amazon
 NEXT_PUBLIC_ADSENSE_ID=ca-pub-XXXXXXXXXX
 NEXT_PUBLIC_SITE_URL=https://aitool-hikaku-navi.com
 
@@ -74,6 +78,7 @@ NEXT_PUBLIC_SITE_URL=https://aitool-hikaku-navi.com
 vercel env add AFFILIATE_ID_A8 production
 vercel env add AFFILIATE_ID_VC production
 vercel env add AFFILIATE_ID_MOSHIMO production
+vercel env add AFFILIATE_ID_MOSHIMO_AMAZON production
 vercel env add NEXT_PUBLIC_ADSENSE_ID production
 vercel env add NEXT_PUBLIC_SITE_URL production
 ```

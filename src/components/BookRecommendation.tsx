@@ -1,5 +1,5 @@
 import type { BookData } from "@/lib/rakuten";
-import { buildRakutenAffiliateUrl, getRakutenImpressionPixelUrl } from "@/lib/rakuten";
+import { buildRakutenAffiliateUrl, getRakutenImpressionPixelUrl, buildAmazonAffiliateUrl, getAmazonImpressionPixelUrl } from "@/lib/rakuten";
 
 interface BookRecommendationProps {
   books: BookData[];
@@ -13,6 +13,7 @@ export default function BookRecommendation({
   if (books.length === 0) return null;
 
   const pixelUrl = getRakutenImpressionPixelUrl();
+  const amazonPixelUrl = getAmazonImpressionPixelUrl();
 
   return (
     <section className="mt-12 scroll-mt-20">
@@ -66,8 +67,10 @@ export default function BookRecommendation({
                       href={affiliateUrl}
                       target="_blank"
                       rel="noopener sponsored nofollow"
-                      className="inline-flex items-center gap-1.5 bg-red-500 hover:bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-lg transition-colors"
+                      className="inline-flex items-center gap-1.5 bg-[#BF0000] hover:bg-[#a00000] text-white text-sm font-semibold py-2 px-4 rounded-lg transition-colors"
                     >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="https://www.google.com/s2/favicons?domain=rakuten.co.jp&sz=32" alt="" width={16} height={16} className="rounded-sm" />
                       楽天で見る
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -75,11 +78,13 @@ export default function BookRecommendation({
                     </a>
                     {book.amazonUrl && (
                       <a
-                        href={book.amazonUrl}
+                        href={buildAmazonAffiliateUrl(book.amazonUrl)}
                         target="_blank"
                         rel="noopener sponsored nofollow"
-                        className="inline-flex items-center gap-1.5 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-semibold py-2 px-4 rounded-lg transition-colors"
+                        className="inline-flex items-center gap-1.5 bg-[#FF9900] hover:bg-[#e68a00] text-white text-sm font-semibold py-2 px-4 rounded-lg transition-colors"
                       >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="https://www.google.com/s2/favicons?domain=amazon.co.jp&sz=32" alt="" width={16} height={16} className="rounded-sm" />
                         Amazonで見る
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -101,6 +106,10 @@ export default function BookRecommendation({
       {pixelUrl && (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={pixelUrl} alt="" width={1} height={1} className="hidden" aria-hidden />
+      )}
+      {amazonPixelUrl && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={amazonPixelUrl} alt="" width={1} height={1} className="hidden" aria-hidden />
       )}
     </section>
   );
